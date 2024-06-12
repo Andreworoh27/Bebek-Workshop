@@ -13,6 +13,8 @@ class ReadHistory{
     private var user: User
     private var book: Book
     private var minutesRead: Int
+    private var currentPage: Int
+    private var bookStatus: String
     private var readDate: Date
     
     init(user: User, book: Book, minutesRead: Int, readDate: Date) {

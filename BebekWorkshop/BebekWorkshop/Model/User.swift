@@ -18,8 +18,9 @@ class User {
     private var preferedGenres: [String]
     private var streak : Int
     private var books: [Book]
+    private var badges: [Badge]
     
-    init(name: String, username: String, email: String, password: String, readingGoal: Int, preferedGenres: [String], streak: Int, books: [Book]) {
+    init(name: String, username: String, email: String, password: String, readingGoal: Int, preferedGenres: [String], streak: Int, books: [Book], badges: [Badge]) {
         self.name = name
         self.username = username
         self.email = email
@@ -28,6 +29,6 @@ class User {
         self.preferedGenres = preferedGenres
         self.streak = streak
         self.books = books
+        self.badges = badges
     }
-
 }

@@ -12,11 +12,11 @@ import SwiftData
 class Badge{
     private var image: String
     private var name: String
-    private var description: String
+    private var badgeDescription: String
     
-    init(image: String, name: String, description: String) {
+    init(image: String, name: String, badgeDescription: String) {
         self.image = image
         self.name = name
-        self.description = description
+        self.badgeDescription = badgeDescription
     }
 }

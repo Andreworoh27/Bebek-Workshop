@@ -18,8 +18,9 @@ class Book{
     private var published: Date
     private var publisher: String
     private var language: String
+    private var review: [Review]
     
-    init(isbn: String, title: String, author: String, pages: Int, descriptiion: String, published: Date, publisher: String, language: String) {
+    init(isbn: String, title: String, author: String, pages: Int, descriptiion: String, published: Date, publisher: String, language: String, review: [Review]) {
         self.isbn = isbn
         self.title = title
         self.author = author
@@ -28,5 +29,6 @@ class Book{
         self.published = published
         self.publisher = publisher
         self.language = language
+        self.review = review
     }
 }
