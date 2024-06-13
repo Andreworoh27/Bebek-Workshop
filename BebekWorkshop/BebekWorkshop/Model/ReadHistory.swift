@@ -17,10 +17,12 @@ class ReadHistory{
     private var bookStatus: String
     private var readDate: Date
     
-    init(user: User, book: Book, minutesRead: Int, readDate: Date) {
+    init(user: User, book: Book, minutesRead: Int, currentPage: Int, bookStatus: String, readDate: Date) {
         self.user = user
         self.book = book
         self.minutesRead = minutesRead
+        self.currentPage = currentPage
+        self.bookStatus = bookStatus
         self.readDate = readDate
     }
 }

@@ -6,19 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Query private var books: [Book]
+    @Environment(\.modelContext) private var context
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List (books) { book in
+                NavigationLink {
+                    Text(book.title)
+                } label: {
+                    Text(book.isbn)
+                }
+            }
+            .navigationTitle("Todos")
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().modelContainer(SampleData.shared.modelContainer)
 }

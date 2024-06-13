@@ -16,6 +16,8 @@
 		AC7811BD2C183C750036235B /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811BC2C183C750036235B /* Badge.swift */; };
 		AC7811BF2C183CB00036235B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811BE2C183CB00036235B /* Review.swift */; };
 		AC7811C12C183CFE0036235B /* ReadHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811C02C183CFE0036235B /* ReadHistory.swift */; };
+		CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC239F2C19DFCA00A83A59 /* SampleData.swift */; };
+		CDEC23A42C19E20600A83A59 /* book.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEC23A32C19E20600A83A59 /* book.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		AC7811BC2C183C750036235B /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		AC7811BE2C183CB00036235B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		AC7811C02C183CFE0036235B /* ReadHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHistory.swift; sourceTree = "<group>"; };
+		CDEC239F2C19DFCA00A83A59 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		CDEC23A32C19E20600A83A59 /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				AC7811A82C1839070036235B /* BebekWorkshop */,
+				CDEC23A32C19E20600A83A59 /* book.json */,
 				AC7811A72C1839070036235B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +66,8 @@
 		AC7811A82C1839070036235B /* BebekWorkshop */ = {
 			isa = PBXGroup;
 			children = (
+				CDEC239E2C19DFB600A83A59 /* Helper */,
+				CDEC237E2C19BD1E00A83A59 /* Resource */,
 				AC7811B72C18395F0036235B /* Model */,
 				AC7811A92C1839070036235B /* BebekWorkshopApp.swift */,
 				AC7811AB2C1839070036235B /* ContentView.swift */,
@@ -88,6 +95,21 @@
 				AC7811C02C183CFE0036235B /* ReadHistory.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CDEC237E2C19BD1E00A83A59 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CDEC239E2C19DFB600A83A59 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CDEC239F2C19DFCA00A83A59 /* SampleData.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +172,7 @@
 			files = (
 				AC7811B12C1839080036235B /* Preview Assets.xcassets in Resources */,
 				AC7811AE2C1839080036235B /* Assets.xcassets in Resources */,
+				CDEC23A42C19E20600A83A59 /* book.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +190,7 @@
 				AC7811B92C1839690036235B /* User.swift in Sources */,
 				AC7811AA2C1839070036235B /* BebekWorkshopApp.swift in Sources */,
 				AC7811BF2C183CB00036235B /* Review.swift in Sources */,
+				CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BebekWorkshop/Preview Content\"";
-				DEVELOPMENT_TEAM = RQC43WJC4G;
+				DEVELOPMENT_TEAM = B4MA3ZSJ87;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -308,12 +332,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = andrew.BebekWorkshop;
+				PRODUCT_BUNDLE_IDENTIFIER = alfadli.BebekWorkshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -329,7 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BebekWorkshop/Preview Content\"";
-				DEVELOPMENT_TEAM = RQC43WJC4G;
+				DEVELOPMENT_TEAM = B4MA3ZSJ87;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -337,12 +362,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = andrew.BebekWorkshop;
+				PRODUCT_BUNDLE_IDENTIFIER = alfadli.BebekWorkshop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -9,16 +9,20 @@ import Foundation
 import SwiftData
 
 @Model
-class Review{
-    private var user: User
-    private var book: Book
-    private var reviewText: String
-    private var rating: Float
+class Review {
+    var user: User?
+    var book: Book?
+    var reviewText: String
+    var rating: Float
     
-    init(user: User, book: Book, reviewText: String, rating: Float) {
-        self.user = user
-        self.book = book
+    init(reviewText: String, rating: Float) {
         self.reviewText = reviewText
         self.rating = rating
     }
+    
+    static let sampleData = [
+        Review(reviewText: "Bukunya bagus", rating: 4),
+        Review(reviewText: "Keren sekali", rating: 5),
+        Review(reviewText: "Keren sekali", rating: 5)
+    ]
 }
