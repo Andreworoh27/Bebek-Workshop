@@ -57,4 +57,8 @@ class Book: Decodable {
             language = try container.decode(String.self, forKey: .language)
             categories = try container.decode([String].self, forKey: .categories)
         }
+    
+    static let sampleData = [
+        Book(isbn: "978-0735211292", image: "book-cover-placeholder", title: "Atomic Habits", author: "James Clear", pages: 320, desc: "An easy and proven way to build good habits and break bad ones.", published: ISO8601DateFormatter().date(from: "2018-10-16T00:00:00Z") ?? Date(), publisher: "Avery", language: "English", categories: ["Self-help"])
+    ]
 }
