@@ -9,9 +9,24 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    var body: some View {
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+            HistoryView().tabItem {
+                    Label("History", systemImage: "list.bullet.rectangle.portrait")
+                }
+                .tag(1)
+        }
+        
+    }
+}
+
+struct HomeView: View {
     @Query private var books: [Book]
-    @Environment(\.modelContext) private var context
-    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
@@ -38,6 +53,29 @@ struct ContentView: View {
     }
 }
 
+struct HistoryView: View {
+    @Query private var readHistories: [ReadHistory]
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(readHistories) { history in
+                    NavigationLink {
+                        VStack {
+                            Text(history.user?.name ?? "Tidak ada")
+                            Text(history.book?.title ?? "Tidak ada")
+                            Text(String(history.minutesRead))
+                            Text(history.readDate.toString())
+                        }
+                    } label: {
+                        Text(history.readDate.toString())
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct CategoryItem: View {
     var book: Book
     
@@ -56,5 +94,7 @@ struct CategoryItem: View {
 }
 
 #Preview {
-    ContentView().modelContainer(SampleData.shared.modelContainer)
+    ContentView()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

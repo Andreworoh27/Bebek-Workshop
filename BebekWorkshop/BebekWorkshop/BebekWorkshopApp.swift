@@ -23,9 +23,11 @@ struct BebekWorkshopApp: App {
         }
     }()
     
+    @StateObject var userViewModel = UserViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userViewModel)
         }
         .modelContainer(sharedModelContainer)
     }

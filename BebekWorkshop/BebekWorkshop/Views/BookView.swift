@@ -9,21 +9,32 @@ import SwiftUI
 
 struct BookView: View {
     var book: Book
-    @StateObject var viewModel: ReadingViewModel = ReadingViewModel()
+    @StateObject var readingViewModel: ReadingViewModel = ReadingViewModel()
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         VStack {
-            Text("Pengguna lagi baca buku")   
-            Text(viewModel.durationCounter.elapsedTime)
+            Text("Pengguna \(userViewModel.currentUser.name) lagi baca buku")   
+            Text(readingViewModel.durationCounter.elapsedTime)
         }
         .onAppear(perform: {
-            viewModel.toggleTracking()
+            readingViewModel.toggleTracking()
         })
         .onDisappear(perform: {
-            let minutes = viewModel.durationCounter.seconds > 30 ? viewModel.durationCounter.minutes + 1 : viewModel.durationCounter.minutes
-            print(minutes)
-            viewModel.toggleTracking()
+            let minutes = readingViewModel.durationCounter.seconds > 30 ? readingViewModel.durationCounter.minutes + 1 : readingViewModel.durationCounter.minutes
+            let newReadHistory = ReadHistory(
+                user: User.sampleData[0],
+                book: book,
+                minutesRead: minutes,
+                currentPage: 5,
+                bookStatus: "reading",
+                readDate: Date()
+            )
+            context.insert(newReadHistory)
             
+            readingViewModel.toggleTracking()
         })
     }
 }
@@ -32,4 +43,6 @@ struct BookView: View {
     NavigationStack {
         BookView(book: Book.sampleData[0])
     }
+    .environmentObject(UserViewModel())
+    .modelContainer(SampleData.shared.modelContainer)
 }

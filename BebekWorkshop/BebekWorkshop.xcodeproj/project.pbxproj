@@ -20,9 +20,10 @@
 		CDEC23A42C19E20600A83A59 /* book.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEC23A32C19E20600A83A59 /* book.json */; };
 		CDEC23A72C1B019100A83A59 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23A62C1B019100A83A59 /* DetailView.swift */; };
 		CDEC23A92C1B051600A83A59 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23A82C1B051600A83A59 /* BookView.swift */; };
-		CDEC23AB2C1B216900A83A59 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23AA2C1B216900A83A59 /* TimerManager.swift */; };
 		CDEC23AD2C1B224800A83A59 /* DurationCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23AC2C1B224800A83A59 /* DurationCounter.swift */; };
 		CDEC23B02C1B23A100A83A59 /* ReadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23AF2C1B23A100A83A59 /* ReadingViewModel.swift */; };
+		CDEC23B22C1B325000A83A59 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23B12C1B325000A83A59 /* UserViewModel.swift */; };
+		CDEC23B42C1D307B00A83A59 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23B32C1D307B00A83A59 /* Formatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +41,10 @@
 		CDEC23A32C19E20600A83A59 /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 		CDEC23A62C1B019100A83A59 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CDEC23A82C1B051600A83A59 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
-		CDEC23AA2C1B216900A83A59 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		CDEC23AC2C1B224800A83A59 /* DurationCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationCounter.swift; sourceTree = "<group>"; };
 		CDEC23AF2C1B23A100A83A59 /* ReadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewModel.swift; sourceTree = "<group>"; };
+		CDEC23B12C1B325000A83A59 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		CDEC23B32C1D307B00A83A59 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				CDEC239F2C19DFCA00A83A59 /* SampleData.swift */,
-				CDEC23AA2C1B216900A83A59 /* TimerManager.swift */,
 				CDEC23AC2C1B224800A83A59 /* DurationCounter.swift */,
+				CDEC23B32C1D307B00A83A59 /* Formatter.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CDEC23AF2C1B23A100A83A59 /* ReadingViewModel.swift */,
+				CDEC23B12C1B325000A83A59 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -217,14 +220,15 @@
 				AC7811BB2C183BA20036235B /* Book.swift in Sources */,
 				CDEC23A72C1B019100A83A59 /* DetailView.swift in Sources */,
 				CDEC23AD2C1B224800A83A59 /* DurationCounter.swift in Sources */,
-				CDEC23AB2C1B216900A83A59 /* TimerManager.swift in Sources */,
 				AC7811C12C183CFE0036235B /* ReadHistory.swift in Sources */,
+				CDEC23B22C1B325000A83A59 /* UserViewModel.swift in Sources */,
 				AC7811BD2C183C750036235B /* Badge.swift in Sources */,
 				AC7811AC2C1839070036235B /* ContentView.swift in Sources */,
 				CDEC23B02C1B23A100A83A59 /* ReadingViewModel.swift in Sources */,
 				AC7811B92C1839690036235B /* User.swift in Sources */,
 				AC7811AA2C1839070036235B /* BebekWorkshopApp.swift in Sources */,
 				AC7811BF2C183CB00036235B /* Review.swift in Sources */,
+				CDEC23B42C1D307B00A83A59 /* Formatter.swift in Sources */,
 				CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */,
 				CDEC23A92C1B051600A83A59 /* BookView.swift in Sources */,
 			);

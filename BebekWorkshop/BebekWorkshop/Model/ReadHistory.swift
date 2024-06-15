@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 class ReadHistory{
-    private var user: User
-    private var book: Book
-    private var minutesRead: Int
-    private var currentPage: Int
-    private var bookStatus: String
-    private var readDate: Date
+    var user: User?
+    var book: Book?
+    var minutesRead: Int
+    var currentPage: Int
+    var bookStatus: String
+    var readDate: Date
     
-    init(user: User, book: Book, minutesRead: Int, currentPage: Int, bookStatus: String, readDate: Date) {
+    init(user: User? = nil, book: Book? = nil, minutesRead: Int, currentPage: Int, bookStatus: String, readDate: Date) {
         self.user = user
         self.book = book
         self.minutesRead = minutesRead
@@ -25,4 +25,10 @@ class ReadHistory{
         self.bookStatus = bookStatus
         self.readDate = readDate
     }
+    
+    static let sampleData = [
+        ReadHistory(minutesRead: 10, currentPage: 4, bookStatus: "reading", readDate: Date()),
+        ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: Date()),
+        ReadHistory(minutesRead: 8, currentPage: 3, bookStatus: "reading", readDate: Date())
+    ]
 }

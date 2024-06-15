@@ -22,7 +22,8 @@ class SampleData {
         let schema = Schema([
             Book.self,
             Review.self,
-            User.self
+            User.self,
+            ReadHistory.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         
@@ -56,6 +57,15 @@ class SampleData {
             book.review.append(Review.sampleData[0])
             book.review.append(Review.sampleData[1])
             book.review.append(Review.sampleData[2])
+        }
+        
+        for history in ReadHistory.sampleData {
+            context.insert(history)
+        }
+        
+        for (index, history) in ReadHistory.sampleData.enumerated() {
+            history.user = User.sampleData[0]
+            history.book = books[index]
         }
         
         do {

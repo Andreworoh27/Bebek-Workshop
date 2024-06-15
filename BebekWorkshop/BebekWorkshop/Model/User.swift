@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 class User {
-    private var name: String
-    private var username: String
-    private var email: String
-    private var password: String
-    private var readingGoal: Int
-    private var preferedGenres: [String]
-    private var streak : Int
-    private var badges = [Badge]()
+    var name: String
+    var username: String
+    var email: String
+    var password: String
+    var readingGoal: Int
+    var preferedGenres: [String]
+    var streak : Int
+    var badges = [Badge]()
     
     init(name: String, username: String, email: String, password: String, readingGoal: Int, preferedGenres: [String], streak: Int) {
         self.name = name
@@ -27,7 +27,6 @@ class User {
         self.readingGoal = readingGoal
         self.preferedGenres = preferedGenres
         self.streak = streak
-        self.badges = badges
     }
     
     static let sampleData = [

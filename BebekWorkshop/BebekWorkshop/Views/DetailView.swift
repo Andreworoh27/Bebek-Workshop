@@ -33,5 +33,7 @@ struct DetailView: View {
 #Preview {
     NavigationStack {
         DetailView(book: Book.sampleData[0])
+            
     }
+    .environmentObject(UserViewModel())
 }
