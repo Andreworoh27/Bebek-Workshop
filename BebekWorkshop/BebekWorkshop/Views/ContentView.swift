@@ -8,7 +8,10 @@
 import SwiftUI
 import SwiftData
 
+
 struct ContentView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
         TabView {
 //            HomeView()
@@ -21,12 +24,13 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
-        
     }
 }
 
 //struct HomeView: View {
 //    @Query private var books: [Book]
+//    @EnvironmentObject var userViewModel: UserViewModel
+//    
 //    var body: some View {
 //        NavigationStack {
 //            VStack(alignment: .leading) {
@@ -48,6 +52,11 @@ struct ContentView: View {
 //                        }
 //                    }
 //                }
+//                Button(action: {
+//                    print(User.sampleData[0].histories.count)
+//                }, label: {
+//                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+//                })
 //            }
 //        }
 //    }
@@ -55,6 +64,11 @@ struct ContentView: View {
 
 struct HistoryView: View {
     @Query private var readHistories: [ReadHistory]
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    var totalReadingMinutesToday: Int {
+        ReadHistory.accumulateReadingMinutesToday(readHistories: readHistories)
+    }
     
     var body: some View {
         NavigationStack {
@@ -72,6 +86,7 @@ struct HistoryView: View {
                     }
                 }
             }
+            .navigationTitle("\(totalReadingMinutesToday)/\(User.sampleData[0].readingGoal) Minutes Today")
         }
     }
 }

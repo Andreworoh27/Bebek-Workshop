@@ -16,23 +16,36 @@ struct BookView: View {
     
     var body: some View {
         VStack {
-            Text("Pengguna \(userViewModel.currentUser.name) lagi baca buku")   
+            Text("Pengguna \(User.sampleData[0].name) lagi baca buku")
             Text(readingViewModel.durationCounter.elapsedTime)
         }
         .onAppear(perform: {
             readingViewModel.toggleTracking()
         })
         .onDisappear(perform: {
-            let minutes = readingViewModel.durationCounter.seconds > 30 ? readingViewModel.durationCounter.minutes + 1 : readingViewModel.durationCounter.minutes
+            let minutes = readingViewModel.durationCounter.seconds > 5 ? readingViewModel.durationCounter.minutes + 1 : readingViewModel.durationCounter.minutes
             let newReadHistory = ReadHistory(
-                user: User.sampleData[0],
-                book: book,
                 minutesRead: minutes,
                 currentPage: 5,
                 bookStatus: "reading",
                 readDate: Date()
             )
             context.insert(newReadHistory)
+            
+            newReadHistory.book = book
+            newReadHistory.user = User.sampleData[0]
+            
+            do {
+                try context.save()
+            } catch {
+                print("Error when inserting sample data: \(error)")
+            }
+            
+            if (ReadHistory.accumulateReadingMinutesToday(readHistories: User.sampleData[0].histories) >= User.sampleData[0].readingGoal && userViewModel.alertHasShown == false)
+            {
+                userViewModel.showAlert = true
+                userViewModel.alertHasShown = true
+            }
             
             readingViewModel.toggleTracking()
         })

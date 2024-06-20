@@ -12,7 +12,9 @@ import SwiftData
 struct BebekWorkshopApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
+            User.self,
             Book.self,
+            ReadHistory.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -23,12 +25,14 @@ struct BebekWorkshopApp: App {
         }
     }()
     
-    @StateObject var userViewModel = UserViewModel()
+    @StateObject var userViewModel: UserViewModel = UserViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(userViewModel)
+                
         }
+        .environmentObject(userViewModel)
         .modelContainer(sharedModelContainer)
     }
 }

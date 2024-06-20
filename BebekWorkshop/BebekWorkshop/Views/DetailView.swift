@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
+    @State var showAlert: Bool = false
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var book: Book
+    
     var body: some View {
         HStack {
             Image(book.image)
@@ -27,13 +30,20 @@ struct DetailView: View {
                 }
             }
         }
+        .alert(isPresented: $userViewModel.showAlert) {
+            Alert(
+                title: Text("Congratulations!"),
+                message: Text("You have achieved your goal!"),
+                dismissButton: .default(Text("Awesome!"))
+            )
+        }
     }
 }
 
 #Preview {
     NavigationStack {
         DetailView(book: Book.sampleData[0])
-            
     }
     .environmentObject(UserViewModel())
+    .modelContainer(SampleData.shared.modelContainer)
 }

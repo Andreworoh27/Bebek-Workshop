@@ -8,9 +8,11 @@
 import Foundation
 
 class UserViewModel: ObservableObject {
-    @Published var currentUser: User
+    @Published var showAlert: Bool
+    @Published var alertHasShown: Bool
     
     init() {
-        self.currentUser = User(name: "User 1", username: "user1", email: "user1@gmail.com", password: "123456", readingGoal: 10, preferedGenres: ["Self-help"], streak: 0)
+        self.showAlert = false
+        self.alertHasShown = false
     }
 }
