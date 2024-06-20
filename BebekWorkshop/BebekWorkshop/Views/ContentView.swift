@@ -11,11 +11,11 @@ import SwiftData
 struct ContentView: View {
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-                .tag(0)
+//            HomeView()
+//                .tabItem {
+//                    Label("Home", systemImage: "house.fill")
+//                }
+//                .tag(0)
             HistoryView().tabItem {
                     Label("History", systemImage: "list.bullet.rectangle.portrait")
                 }
@@ -25,33 +25,33 @@ struct ContentView: View {
     }
 }
 
-struct HomeView: View {
-    @Query private var books: [Book]
-    var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                Text("Self Help")
-                    .font(.headline)
-                    .padding(.leading, 15)
-                    .padding(.top, 5)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 0) {
-                        ForEach(books) { book in
-                            if (book.categories.contains("Self-help")) {
-                                NavigationLink {
-                                    DetailView(book: book)
-                                } label: {
-                                    CategoryItem(book: book)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+//struct HomeView: View {
+//    @Query private var books: [Book]
+//    var body: some View {
+//        NavigationStack {
+//            VStack(alignment: .leading) {
+//                Text("Self Help")
+//                    .font(.headline)
+//                    .padding(.leading, 15)
+//                    .padding(.top, 5)
+//                
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack(alignment: .top, spacing: 0) {
+//                        ForEach(books) { book in
+//                            if (book.categories.contains("Self-help")) {
+//                                NavigationLink {
+//                                    DetailView(book: book)
+//                                } label: {
+//                                    CategoryItem(book: book)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 struct HistoryView: View {
     @Query private var readHistories: [ReadHistory]

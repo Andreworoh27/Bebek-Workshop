@@ -16,6 +16,25 @@
 		AC7811BD2C183C750036235B /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811BC2C183C750036235B /* Badge.swift */; };
 		AC7811BF2C183CB00036235B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811BE2C183CB00036235B /* Review.swift */; };
 		AC7811C12C183CFE0036235B /* ReadHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7811C02C183CFE0036235B /* ReadHistory.swift */; };
+		ACE256012C2415DE002CC233 /* How To Win Friends and Influence People.epub in Resources */ = {isa = PBXBuildFile; fileRef = ACE255FF2C2415DE002CC233 /* How To Win Friends and Influence People.epub */; };
+		ACE256022C2415DE002CC233 /* Murder on the Orient Express.epub in Resources */ = {isa = PBXBuildFile; fileRef = ACE256002C2415DE002CC233 /* Murder on the Orient Express.epub */; };
+		ACE256062C241769002CC233 /* SearchBarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256052C241769002CC233 /* SearchBarComponent.swift */; };
+		ACE256082C241B49002CC233 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256072C241B49002CC233 /* HomeView.swift */; };
+		ACE256152C241FC7002CC233 /* HostGrotesk-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE2560B2C241FC7002CC233 /* HostGrotesk-Light.ttf */; };
+		ACE256162C241FC7002CC233 /* HostGrotesk-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE2560C2C241FC7002CC233 /* HostGrotesk-Medium.ttf */; };
+		ACE256172C241FC7002CC233 /* HostGrotesk-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE2560D2C241FC7002CC233 /* HostGrotesk-Black.ttf */; };
+		ACE256182C241FC7002CC233 /* HostGrotesk-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE2560E2C241FC7002CC233 /* HostGrotesk-BlackItalic.ttf */; };
+		ACE256192C241FC7002CC233 /* HostGrotesk-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE2560F2C241FC7002CC233 /* HostGrotesk-BoldItalic.ttf */; };
+		ACE2561A2C241FC7002CC233 /* HostGrotesk-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE256102C241FC7002CC233 /* HostGrotesk-LightItalic.ttf */; };
+		ACE2561B2C241FC7002CC233 /* HostGrotesk-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE256112C241FC7002CC233 /* HostGrotesk-MediumItalic.ttf */; };
+		ACE2561C2C241FC7002CC233 /* HostGrotesk-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE256122C241FC7002CC233 /* HostGrotesk-Italic.ttf */; };
+		ACE2561D2C241FC7002CC233 /* HostGrotesk-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE256132C241FC7002CC233 /* HostGrotesk-Regular.ttf */; };
+		ACE2561E2C241FC7002CC233 /* HostGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE256142C241FC7002CC233 /* HostGrotesk-Bold.ttf */; };
+		ACE256222C2422BF002CC233 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256212C2422BF002CC233 /* Font.swift */; };
+		ACE256242C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256232C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift */; };
+		ACE256262C24347E002CC233 /* DailyGoalHomeProgressComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256252C24347E002CC233 /* DailyGoalHomeProgressComponent.swift */; };
+		ACE256282C2438C6002CC233 /* CircularProgressComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256272C2438C6002CC233 /* CircularProgressComponent.swift */; };
+		ACE2562A2C243EB8002CC233 /* OtherBookCardHomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE256292C243EB8002CC233 /* OtherBookCardHomeComponent.swift */; };
 		CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC239F2C19DFCA00A83A59 /* SampleData.swift */; };
 		CDEC23A42C19E20600A83A59 /* book.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEC23A32C19E20600A83A59 /* book.json */; };
 		CDEC23A72C1B019100A83A59 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23A62C1B019100A83A59 /* DetailView.swift */; };
@@ -37,6 +56,26 @@
 		AC7811BC2C183C750036235B /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		AC7811BE2C183CB00036235B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		AC7811C02C183CFE0036235B /* ReadHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHistory.swift; sourceTree = "<group>"; };
+		ACE255FF2C2415DE002CC233 /* How To Win Friends and Influence People.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "How To Win Friends and Influence People.epub"; sourceTree = "<group>"; };
+		ACE256002C2415DE002CC233 /* Murder on the Orient Express.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Murder on the Orient Express.epub"; sourceTree = "<group>"; };
+		ACE256052C241769002CC233 /* SearchBarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarComponent.swift; sourceTree = "<group>"; };
+		ACE256072C241B49002CC233 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		ACE2560B2C241FC7002CC233 /* HostGrotesk-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Light.ttf"; sourceTree = "<group>"; };
+		ACE2560C2C241FC7002CC233 /* HostGrotesk-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Medium.ttf"; sourceTree = "<group>"; };
+		ACE2560D2C241FC7002CC233 /* HostGrotesk-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Black.ttf"; sourceTree = "<group>"; };
+		ACE2560E2C241FC7002CC233 /* HostGrotesk-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-BlackItalic.ttf"; sourceTree = "<group>"; };
+		ACE2560F2C241FC7002CC233 /* HostGrotesk-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-BoldItalic.ttf"; sourceTree = "<group>"; };
+		ACE256102C241FC7002CC233 /* HostGrotesk-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-LightItalic.ttf"; sourceTree = "<group>"; };
+		ACE256112C241FC7002CC233 /* HostGrotesk-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-MediumItalic.ttf"; sourceTree = "<group>"; };
+		ACE256122C241FC7002CC233 /* HostGrotesk-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Italic.ttf"; sourceTree = "<group>"; };
+		ACE256132C241FC7002CC233 /* HostGrotesk-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Regular.ttf"; sourceTree = "<group>"; };
+		ACE256142C241FC7002CC233 /* HostGrotesk-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HostGrotesk-Bold.ttf"; sourceTree = "<group>"; };
+		ACE2561F2C24200B002CC233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ACE256212C2422BF002CC233 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		ACE256232C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentlyReadBookCoverComponent.swift; sourceTree = "<group>"; };
+		ACE256252C24347E002CC233 /* DailyGoalHomeProgressComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalHomeProgressComponent.swift; sourceTree = "<group>"; };
+		ACE256272C2438C6002CC233 /* CircularProgressComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressComponent.swift; sourceTree = "<group>"; };
+		ACE256292C243EB8002CC233 /* OtherBookCardHomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherBookCardHomeComponent.swift; sourceTree = "<group>"; };
 		CDEC239F2C19DFCA00A83A59 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		CDEC23A32C19E20600A83A59 /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 		CDEC23A62C1B019100A83A59 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -78,6 +117,9 @@
 		AC7811A82C1839070036235B /* BebekWorkshop */ = {
 			isa = PBXGroup;
 			children = (
+				ACE256202C24228B002CC233 /* Utility */,
+				ACE2561F2C24200B002CC233 /* Info.plist */,
+				ACE256092C241E5C002CC233 /* Fonts */,
 				CDEC23AE2C1B238D00A83A59 /* ViewModel */,
 				CDEC23A52C1B016C00A83A59 /* Views */,
 				CDEC239E2C19DFB600A83A59 /* Helper */,
@@ -110,9 +152,56 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ACE256042C241724002CC233 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ACE256052C241769002CC233 /* SearchBarComponent.swift */,
+				ACE256232C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift */,
+				ACE256252C24347E002CC233 /* DailyGoalHomeProgressComponent.swift */,
+				ACE256272C2438C6002CC233 /* CircularProgressComponent.swift */,
+				ACE256292C243EB8002CC233 /* OtherBookCardHomeComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		ACE256092C241E5C002CC233 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ACE2560A2C241FA7002CC233 /* Host Grostek */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ACE2560A2C241FA7002CC233 /* Host Grostek */ = {
+			isa = PBXGroup;
+			children = (
+				ACE2560D2C241FC7002CC233 /* HostGrotesk-Black.ttf */,
+				ACE2560E2C241FC7002CC233 /* HostGrotesk-BlackItalic.ttf */,
+				ACE256142C241FC7002CC233 /* HostGrotesk-Bold.ttf */,
+				ACE2560F2C241FC7002CC233 /* HostGrotesk-BoldItalic.ttf */,
+				ACE256122C241FC7002CC233 /* HostGrotesk-Italic.ttf */,
+				ACE2560B2C241FC7002CC233 /* HostGrotesk-Light.ttf */,
+				ACE256102C241FC7002CC233 /* HostGrotesk-LightItalic.ttf */,
+				ACE2560C2C241FC7002CC233 /* HostGrotesk-Medium.ttf */,
+				ACE256112C241FC7002CC233 /* HostGrotesk-MediumItalic.ttf */,
+				ACE256132C241FC7002CC233 /* HostGrotesk-Regular.ttf */,
+			);
+			path = "Host Grostek";
+			sourceTree = "<group>";
+		};
+		ACE256202C24228B002CC233 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				ACE256212C2422BF002CC233 /* Font.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		CDEC237E2C19BD1E00A83A59 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				ACE255FF2C2415DE002CC233 /* How To Win Friends and Influence People.epub */,
+				ACE256002C2415DE002CC233 /* Murder on the Orient Express.epub */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -130,9 +219,11 @@
 		CDEC23A52C1B016C00A83A59 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACE256042C241724002CC233 /* Components */,
 				AC7811AB2C1839070036235B /* ContentView.swift */,
 				CDEC23A62C1B019100A83A59 /* DetailView.swift */,
 				CDEC23A82C1B051600A83A59 /* BookView.swift */,
+				ACE256072C241B49002CC233 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,7 +295,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE2561E2C241FC7002CC233 /* HostGrotesk-Bold.ttf in Resources */,
+				ACE256172C241FC7002CC233 /* HostGrotesk-Black.ttf in Resources */,
 				AC7811B12C1839080036235B /* Preview Assets.xcassets in Resources */,
+				ACE2561C2C241FC7002CC233 /* HostGrotesk-Italic.ttf in Resources */,
+				ACE256162C241FC7002CC233 /* HostGrotesk-Medium.ttf in Resources */,
+				ACE2561A2C241FC7002CC233 /* HostGrotesk-LightItalic.ttf in Resources */,
+				ACE256182C241FC7002CC233 /* HostGrotesk-BlackItalic.ttf in Resources */,
+				ACE2561B2C241FC7002CC233 /* HostGrotesk-MediumItalic.ttf in Resources */,
+				ACE256152C241FC7002CC233 /* HostGrotesk-Light.ttf in Resources */,
+				ACE256022C2415DE002CC233 /* Murder on the Orient Express.epub in Resources */,
+				ACE256012C2415DE002CC233 /* How To Win Friends and Influence People.epub in Resources */,
+				ACE256192C241FC7002CC233 /* HostGrotesk-BoldItalic.ttf in Resources */,
+				ACE2561D2C241FC7002CC233 /* HostGrotesk-Regular.ttf in Resources */,
 				AC7811AE2C1839080036235B /* Assets.xcassets in Resources */,
 				CDEC23A42C19E20600A83A59 /* book.json in Resources */,
 			);
@@ -218,18 +321,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC7811BB2C183BA20036235B /* Book.swift in Sources */,
+				ACE256242C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift in Sources */,
 				CDEC23A72C1B019100A83A59 /* DetailView.swift in Sources */,
 				CDEC23AD2C1B224800A83A59 /* DurationCounter.swift in Sources */,
 				AC7811C12C183CFE0036235B /* ReadHistory.swift in Sources */,
+				ACE2562A2C243EB8002CC233 /* OtherBookCardHomeComponent.swift in Sources */,
+				ACE256262C24347E002CC233 /* DailyGoalHomeProgressComponent.swift in Sources */,
 				CDEC23B22C1B325000A83A59 /* UserViewModel.swift in Sources */,
 				AC7811BD2C183C750036235B /* Badge.swift in Sources */,
+				ACE256062C241769002CC233 /* SearchBarComponent.swift in Sources */,
 				AC7811AC2C1839070036235B /* ContentView.swift in Sources */,
 				CDEC23B02C1B23A100A83A59 /* ReadingViewModel.swift in Sources */,
 				AC7811B92C1839690036235B /* User.swift in Sources */,
 				AC7811AA2C1839070036235B /* BebekWorkshopApp.swift in Sources */,
 				AC7811BF2C183CB00036235B /* Review.swift in Sources */,
 				CDEC23B42C1D307B00A83A59 /* Formatter.swift in Sources */,
+				ACE256282C2438C6002CC233 /* CircularProgressComponent.swift in Sources */,
+				ACE256082C241B49002CC233 /* HomeView.swift in Sources */,
 				CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */,
+				ACE256222C2422BF002CC233 /* Font.swift in Sources */,
 				CDEC23A92C1B051600A83A59 /* BookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,9 +474,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BebekWorkshop/Preview Content\"";
-				DEVELOPMENT_TEAM = B4MA3ZSJ87;
+				DEVELOPMENT_TEAM = RQC43WJC4G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BebekWorkshop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -394,9 +505,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BebekWorkshop/Preview Content\"";
-				DEVELOPMENT_TEAM = B4MA3ZSJ87;
+				DEVELOPMENT_TEAM = RQC43WJC4G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BebekWorkshop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
