@@ -12,7 +12,7 @@ struct SearchBarComponent: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .frame(width: 794, height: 77)
+                .frame(height: 77)
                 .foregroundColor(Color.secondaryLightblue)
                 .cornerRadius(50)
         }

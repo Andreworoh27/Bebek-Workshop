@@ -12,7 +12,7 @@ struct OtherBookCardHomeComponent: View {
         VStack{
             Image("book-cover-placeholder")
                 .resizable()
-                .frame(width: 177,height: 287)
+                .aspectRatio(contentMode: .fit)
                 .padding(.bottom, 16)
             Text("Book title")
                 .font(Font.hostGrotesk(typography: .body))

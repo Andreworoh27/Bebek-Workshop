@@ -34,7 +34,8 @@ struct DailyGoalHomeProgressComponent: View {
                 Spacer()
             }
         }
-        .frame(width: 754, height: 208)
+        .padding(.horizontal, 40)
+        .frame(height: 208)
     }
 }
 

@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    let columns = [
+        GridItem(.adaptive(minimum: 177))
+    ]
     var body: some View {
-        VStack{
+        VStack {
             SearchBarComponent()
+                .padding(.bottom, 58)
             ScrollView{
                 VStack{
                     HStack{
@@ -26,6 +30,7 @@ struct HomeView: View {
                         Text("to hit your goal")
                             .font(Font.hostGrotesk(typography: .body))
                     }
+                    .padding(.horizontal, 40.0)
                     
                     ScrollView([.horizontal]){
                         HStack(spacing: 16){
@@ -43,34 +48,36 @@ struct HomeView: View {
                             CurrentlyReadBookCoverComponent()
                         }
                     }
-                    .padding(.bottom,38)
+                    .padding(EdgeInsets(top: 0, leading: 40, bottom: 38, trailing: -40))
                     
                     DailyGoalHomeProgressComponent()
-                        .padding(.bottom,58)
+                        .padding(.bottom, 58)
                     
-                    HStack{
-                        Text("Other Books You Might Like")
-                            .font(Font.hostGrotesk(typography: .largeTitle))
-                            .bold()
-                        Spacer()
+                    VStack {
+                        HStack{
+                            Text("Other Books You Might Like")
+                                .font(Font.hostGrotesk(typography: .largeTitle))
+                                .bold()
+                            Spacer()
+                        }
+                        .padding(.bottom, 29)
+                        
+                        // create container to wrap books.
+                        LazyVGrid(columns: columns, spacing: 10)
+                        {
+                            OtherBookCardHomeComponent()
+                            OtherBookCardHomeComponent()
+                            OtherBookCardHomeComponent()
+                            OtherBookCardHomeComponent()
+                            OtherBookCardHomeComponent()
+                            OtherBookCardHomeComponent()
+                        }
                     }
-                    .padding(.bottom, 19)
-                    
-                    // create container to wrap books.
-                    HStack(spacing: 10){
-                        OtherBookCardHomeComponent()
-                        OtherBookCardHomeComponent()
-                        OtherBookCardHomeComponent()
-                        OtherBookCardHomeComponent()
-                    }
-                    .padding(.top, 19)
-                    
-                    
+                    .padding([.bottom, .leading, .trailing], 40)
                 }
-                .padding([.leading,.trailing],40)
-                .padding(.top, 58)
             }
         }
+        .padding(.top, 38)
     }
 }
 

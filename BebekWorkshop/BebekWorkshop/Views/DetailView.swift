@@ -14,6 +14,7 @@ struct DetailView: View {
     var book: Book
     
     var body: some View {
+        SearchBarComponent()
         HStack {
             Image(book.image)
             VStack(alignment: .leading) {

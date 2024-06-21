@@ -14,11 +14,11 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-//            HomeView()
-//                .tabItem {
-//                    Label("Home", systemImage: "house.fill")
-//                }
-//                .tag(0)
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
             HistoryView().tabItem {
                     Label("History", systemImage: "list.bullet.rectangle.portrait")
                 }
@@ -27,7 +27,7 @@ struct ContentView: View {
     }
 }
 
-//struct HomeView: View {
+//struct HomeViewTest: View {
 //    @Query private var books: [Book]
 //    @EnvironmentObject var userViewModel: UserViewModel
 //    
