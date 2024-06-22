@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+    
+    @Environment(\.modelContext)private var context
+    @Query var allBooks:[Book]
+    
     let columns = [
         GridItem(.adaptive(minimum: 177))
     ]
@@ -15,6 +20,7 @@ struct HomeView: View {
         VStack {
             SearchBarComponent()
                 .padding(.bottom, 58)
+            
             ScrollView{
                 VStack{
                     HStack{
@@ -65,22 +71,43 @@ struct HomeView: View {
                         // create container to wrap books.
                         LazyVGrid(columns: columns, spacing: 10)
                         {
-                            OtherBookCardHomeComponent()
-                            OtherBookCardHomeComponent()
-                            OtherBookCardHomeComponent()
-                            OtherBookCardHomeComponent()
-                            OtherBookCardHomeComponent()
-                            OtherBookCardHomeComponent()
+
+                            ForEach(allBooks, id: \.self){ book in
+                                OtherBookCardHomeComponent(book: book)
+                            }
                         }
                     }
                     .padding([.bottom, .leading, .trailing], 40)
                 }
             }
+            
+        }
+        .onAppear{
+            if(allBooks.isEmpty){
+                Task{
+                    do{
+                        try await generateInitialBooksData()
+                    }catch{
+                        print("failed to generate book in homeview")
+                    }
+                }
+                print("\(context.insertedModelsArray.count)")
+            }
         }
         .padding(.top, 38)
     }
+    
+    func generateInitialBooksData()async throws{
+        let books = await generateBook()
+        for book in books {
+            context.insert(book)
+        }
+        
+        try context.save()
+        
+    }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

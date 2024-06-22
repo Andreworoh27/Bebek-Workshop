@@ -10,29 +10,37 @@ import SwiftData
 
 @main
 struct BebekWorkshopApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            User.self,
-            Book.self,
-            ReadHistory.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+//    var sharedModelContainer: ModelContainer = {
+//        let schema = Schema([
+//            User.self,
+//            Book.self,
+//            ReadHistory.self,
+//            Book.self
+//        ])
+//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+//        
+//        do {
+//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+//        } catch {
+//            fatalError("Could not create ModelContainer: \(error)")
+//        }
+//    }()
     
-    @StateObject var userViewModel: UserViewModel = UserViewModel()
+//    @StateObject var userViewModel: UserViewModel = UserViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                
+            //            ContentView()
+            HomeView()
+                .modelContainer(for: [
+                    Book.self,
+                    User.self,
+                    Review.self,
+                    Badge.self,
+                    ReadHistory.self
+                ])
         }
-        .environmentObject(userViewModel)
-        .modelContainer(sharedModelContainer)
+//        .environmentObject(userViewModel)
+        
     }
 }

@@ -16,10 +16,23 @@ struct DetailView: View {
     var body: some View {
         SearchBarComponent()
         HStack {
-            Image(book.image)
+            if let coverUrl = book.cover?.url,
+               let imageData = try? Data(contentsOf: coverUrl),
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .frame(width: 177, height: 287)
+                    .padding(.bottom, 16)
+            } else {
+                Image("book-cover-placeholder")
+                    .resizable()
+                    .frame(width: 177, height: 287)
+                    .padding(.bottom, 16)
+            }
+            
             VStack(alignment: .leading) {
                 Text(book.title)
-                Text(book.author)
+                Text(book.authors ?? " ")
                 NavigationLink {
                     BookView(book: book)
                 } label: {
@@ -42,9 +55,6 @@ struct DetailView: View {
 }
 
 #Preview {
-    NavigationStack {
-        DetailView(book: Book.sampleData[0])
-    }
-    .environmentObject(UserViewModel())
-    .modelContainer(SampleData.shared.modelContainer)
+        DetailView(book: Book.sampleData[0])    .environmentObject(UserViewModel())
+//    .modelContainer(SampleData.shared.modelContainer)
 }
