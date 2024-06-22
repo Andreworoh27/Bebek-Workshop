@@ -15,11 +15,10 @@ struct OtherBookCardHomeComponent: View {
                 .aspectRatio(contentMode: .fit)
                 .padding(.bottom, 16)
             Text("Book title")
-                .font(Font.hostGrotesk(typography: .body))
                 .bold()
             Text("Book Author")
                 .font(Font.hostGrotesk(typography: .caption1))
-                .foregroundStyle(Color.tertiaryAuthorName)
+                .foregroundStyle(Color.secondaryBlueberry)
         }
     }
 }

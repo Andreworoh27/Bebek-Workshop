@@ -30,6 +30,7 @@ struct BebekWorkshopApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .font(Font.hostGrotesk(typography: .body))
                 
         }
         .environmentObject(userViewModel)

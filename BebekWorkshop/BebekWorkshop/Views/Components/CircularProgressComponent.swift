@@ -12,15 +12,15 @@ struct CircularProgressComponent: View {
     var body: some View {
         ZStack{
             Circle()
-                .stroke(Color.tertiaryProgressOutline, lineWidth: 15)
-                .frame(width: 129,height: 128.28)
+                .stroke(Color.white, lineWidth: 15)
+                .frame(width: 164)
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(Color.tertiaryProgresInnerCirlce,style: StrokeStyle(
+                .stroke(Color.secondaryBlueberry,style: StrokeStyle(
                     lineWidth: 15,
                     lineCap: .round)
                 )
-                .frame(width: 122.48, height: 128.28)
+                .frame(width: 164)
                 .rotationEffect(.degrees(-90))
                 .animation(.easeIn, value: progress)
         }

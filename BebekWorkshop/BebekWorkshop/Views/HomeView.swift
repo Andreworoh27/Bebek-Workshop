@@ -14,6 +14,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             SearchBarComponent()
+                .padding(.horizontal, 20)
                 .padding(.bottom, 58)
             ScrollView{
                 VStack{

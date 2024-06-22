@@ -24,6 +24,7 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
+        .font(Font.hostGrotesk(typography: .body))
     }
 }
 
@@ -66,6 +67,8 @@ struct HistoryView: View {
     @Query private var readHistories: [ReadHistory]
     @EnvironmentObject var userViewModel: UserViewModel
     
+    @Query private var reviews: [Review]
+    
     var totalReadingMinutesToday: Int {
         ReadHistory.accumulateReadingMinutesToday(readHistories: readHistories)
     }
@@ -85,6 +88,20 @@ struct HistoryView: View {
                         Text(history.readDate.toString())
                     }
                 }
+                
+                ForEach(reviews) { review in
+                    NavigationLink {
+                        VStack {
+                            Text(review.user?.name ?? "Tidak ada")
+                            Text(review.book?.title ?? "Tidak ada")
+                            Text(String(review.rating))
+                            Text(review.reviewText)
+                        }
+                    } label: {
+                        Text(review.reviewText)
+                    }
+                }
+
             }
             .navigationTitle("\(totalReadingMinutesToday)/\(User.sampleData[0].readingGoal) Minutes Today")
         }
