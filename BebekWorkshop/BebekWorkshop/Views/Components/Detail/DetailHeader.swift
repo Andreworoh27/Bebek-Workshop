@@ -11,6 +11,10 @@ import SwiftData
 struct DetailHeader: View {
     @Environment(\.modelContext) private var context
     @EnvironmentObject var userViewModel : UserViewModel
+    //    @Query (filter: #Predicate<ReadHistory> {history in
+    //        history.book == book && history.user == userViewModel.currentLogUser
+    //    }) let readHistories : [ReadHistory]
+    @Query var readHistories : [ReadHistory]
 
     var book: Book
     var body: some View {
@@ -44,7 +48,7 @@ struct DetailHeader: View {
                         }
                         .font(.system(size: 28))
                     }
-//                    Text(book.authors?.first)
+                    //                    Text(book.authors?.first)
                 }
                 
                 Spacer()
@@ -52,14 +56,17 @@ struct DetailHeader: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
-                        context.insert(readHistory)
-                        do {
-                            try context.save()
-                        } catch {
-                            print("failed to save reading history when open book")
-                        }
                         
+                        var exist = checkIfBookExistInDatabase()
+                        if !exist {
+                            let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
+                            context.insert(readHistory)
+                            do {
+                                try context.save()
+                            } catch {
+                                print("failed to save reading history when open book")
+                            }
+                        }
                     }, label: {
                         Text("Start Reading")
                             .font(Font.hostGrotesk(typography: .headline))
@@ -113,6 +120,16 @@ struct DetailHeader: View {
         }
         .frame(height: 311)
         .padding(.bottom, 44)
+    }
+    
+    func checkIfBookExistInDatabase()-> Bool{
+        var valid : Bool = false
+        readHistories.forEach { readHistory in
+            if(readHistory.book == book && readHistory.user == userViewModel.currentLogUser){
+                 valid = true
+            }
+        }
+        return valid
     }
 }
 
