@@ -11,9 +11,17 @@ struct DetailHeader: View {
     var book: Book
     var body: some View {
         HStack {
-            Image(book.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            if let coverUrl = book.cover?.url,
+               let imageData = try? Data(contentsOf: coverUrl),
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Image("book-cover-placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
             
             VStack {
                 VStack(alignment: .leading, spacing: 6) {
@@ -28,7 +36,7 @@ struct DetailHeader: View {
                         }
                         .font(.system(size: 28))
                     }
-                    Text(book.author)
+//                    Text(book.authors?.first)
                 }
                 
                 Spacer()

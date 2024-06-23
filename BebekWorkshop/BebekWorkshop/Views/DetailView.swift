@@ -14,35 +14,6 @@ struct DetailView: View {
     var book: Book
     
     var body: some View {
-<<<<<<< HEAD
-        SearchBarComponent()
-        HStack {
-            if let coverUrl = book.cover?.url,
-               let imageData = try? Data(contentsOf: coverUrl),
-               let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .frame(width: 177, height: 287)
-                    .padding(.bottom, 16)
-            } else {
-                Image("book-cover-placeholder")
-                    .resizable()
-                    .frame(width: 177, height: 287)
-                    .padding(.bottom, 16)
-            }
-            
-            VStack(alignment: .leading) {
-                Text(book.title)
-                Text(book.authors ?? " ")
-                NavigationLink {
-                    BookView(book: book)
-                } label: {
-                    Text("Read")
-                        .foregroundStyle(.black)
-                        .padding()
-                        .background(.orange)
-                        .clipShape(.buttonBorder)
-=======
         VStack {
             SearchBarComponent()
                 .padding(.horizontal, 20)
@@ -61,7 +32,6 @@ struct DetailView: View {
                     BookReviews()
                     
                     Spacer()
->>>>>>> development
                 }
                 .padding(32)
             }

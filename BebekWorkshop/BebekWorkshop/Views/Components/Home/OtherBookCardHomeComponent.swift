@@ -11,7 +11,6 @@ struct OtherBookCardHomeComponent: View {
     var book:Book
     var body: some View {
         VStack{
-<<<<<<< HEAD:BebekWorkshop/BebekWorkshop/Views/Components/OtherBookCardHomeComponent.swift
             if let coverUrl = book.cover?.url,
                let imageData = try? Data(contentsOf: coverUrl),
                let uiImage = UIImage(data: imageData) {
@@ -27,13 +26,6 @@ struct OtherBookCardHomeComponent: View {
             }
             Text("\(book.title)")
                 .font(Font.hostGrotesk(typography: .body))
-=======
-            Image("book-cover-placeholder")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.bottom, 16)
-            Text("Book title")
->>>>>>> development:BebekWorkshop/BebekWorkshop/Views/Components/Home/OtherBookCardHomeComponent.swift
                 .bold()
             Text("\(book.authors ?? " ")")
                 .font(Font.hostGrotesk(typography: .caption1))

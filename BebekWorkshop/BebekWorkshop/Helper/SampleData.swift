@@ -1,40 +1,40 @@
-////
-////  SampleData.swift
-////  BebekWorkshop
-////
-////  Created by Alfadli Maulana Siddik on 12/06/24.
-////
 //
-//import Foundation
-//import SwiftData
+//  SampleData.swift
+//  BebekWorkshop
 //
-//@MainActor
-//class SampleData {
-//    static let shared = SampleData()
-//    
-//    let modelContainer: ModelContainer
-//    
-//    var context: ModelContext {
-//        modelContainer.mainContext
-//    }
-//    
-//    private init() {
-//        let schema = Schema([
-//            Book.self,
-//            Review.self,
-//            User.self,
-//            ReadHistory.self
-//        ])
-//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
-//        
-//        do {
-//            modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
+//  Created by Alfadli Maulana Siddik on 12/06/24.
+//
+
+import Foundation
+import SwiftData
+
+@MainActor
+class SampleData {
+    static let shared = SampleData()
+    
+    let modelContainer: ModelContainer
+    
+    var context: ModelContext {
+        modelContainer.mainContext
+    }
+    
+    private init() {
+        let schema = Schema([
+            Book.self,
+            Review.self,
+            User.self,
+            ReadHistory.self
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+        
+        do {
+            modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
 //            insertSampleData()
-//        } catch {
-//            fatalError("Error on SampleData: \(error)")
-//        }
-//    }
-//    
+        } catch {
+            fatalError("Error on SampleData: \(error)")
+        }
+    }
+    
 //    func insertSampleData() {
 //        let books: [Book] = self.load("book.json")
 //        for book in books {
@@ -99,4 +99,4 @@
 //            fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
 //        }
 //    }
-//}
+}
