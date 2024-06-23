@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 class UserViewModel: ObservableObject {
     @Published var currentLogUser : User?
@@ -19,5 +20,9 @@ class UserViewModel: ObservableObject {
     
     func setCurrentLogUser(user: User){
         currentLogUser = user
+    }
+    
+    func insertNewUser(newUser: User, context : ModelContext){
+        context.insert(newUser)
     }
 }

@@ -6,22 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DetailView: View {
+    @Environment(\.modelContext) private var context
     @State var showAlert: Bool = false
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel : UserViewModel
     
     var book: Book
     
     var body: some View {
         VStack {
-            SearchBarComponent(user: userViewModel.currentLogUser!)
+            SearchBarComponent(user: userViewModel.currentLogUser ?? User.sampleData[0])
                 .padding(.horizontal, 20)
             ZStack {
                 UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)
                     .foregroundColor(Color.secondaryLightblueBackground)
                     .padding(.top, 190)
                 VStack {
+                    
                     DetailHeader(book: book)
                     
                     BookSynopsis(
@@ -36,13 +39,13 @@ struct DetailView: View {
                 .padding(32)
             }
             .padding([.leading, .top, .trailing], 40)
-            .alert(isPresented: $userViewModel.showAlert) {
-                Alert(
-                    title: Text("Congratulations!"),
-                    message: Text("You have achieved your goal!"),
-                    dismissButton: .default(Text("Awesome!"))
-                )
-            }
+//            .alert(isPresented: $userViewModel.showAlert) {
+//                Alert(
+//                    title: Text("Congratulations!"),
+//                    message: Text("You have achieved your goal!"),
+//                    dismissButton: .default(Text("Awesome!"))
+//                )
+//            }
         }
         .padding(.top, 38)
         .ignoresSafeArea(edges: .bottom)
@@ -50,6 +53,7 @@ struct DetailView: View {
 }
 
 #Preview {
-        DetailView(book: Book.sampleData[0])    .environmentObject(UserViewModel())
-//    .modelContainer(SampleData.shared.modelContainer)
+    DetailView(book: Book.sampleData[0])
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

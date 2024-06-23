@@ -113,6 +113,7 @@ class Book {
 //        }
 //    
     static let sampleData = [
-        Book(title: "test book", type: "epub", path: "dfsds")
+        Book(title: "test book", type: "epub", path: "dfsds"),
+        Book(title: "test book2 ", type: "epub", path: "dfsds342432")
     ]
 }

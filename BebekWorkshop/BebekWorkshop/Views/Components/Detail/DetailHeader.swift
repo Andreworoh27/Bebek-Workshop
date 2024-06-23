@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DetailHeader: View {
+    @Environment(\.modelContext) private var context
+    @EnvironmentObject var userViewModel : UserViewModel
+
     var book: Book
     var body: some View {
         HStack {
@@ -26,9 +30,13 @@ struct DetailHeader: View {
             VStack {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
-                        Text(book.title)
-                            .font(Font.hostGrotesk(typography: .largeTitle))
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        VStack(alignment: .leading){
+                            Text(book.title)
+                                .font(Font.hostGrotesk(typography: .largeTitle))
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            Text(book.authors ?? "Unknown Author(s)")
+                                .font(Font.hostGrotesk(typography: .body))
+                        }
                         Spacer()
                         HStack(spacing: 16) {
                             Image(systemName: "bookmark")
@@ -43,7 +51,16 @@ struct DetailHeader: View {
                 
                 HStack {
                     Spacer()
-                    Button(action: {}, label: {
+                    Button(action: {
+                        let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
+                        context.insert(readHistory)
+                        do {
+                            try context.save()
+                        } catch {
+                            print("failed to save reading history when open book")
+                        }
+                        
+                    }, label: {
                         Text("Start Reading")
                             .font(Font.hostGrotesk(typography: .headline))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

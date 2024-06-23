@@ -13,6 +13,8 @@ struct HomeView: View {
     @Environment(\.modelContext) private var context
     @EnvironmentObject var userViewModel : UserViewModel
     @Query var allBooks:[Book]
+    @Query var allUsers:[User]
+    @Query var currentlyReadBooks : [ReadHistory]
     
     let columns = [
         GridItem(.adaptive(minimum: 177))
@@ -23,11 +25,7 @@ struct HomeView: View {
                 SearchBarComponent(user: userViewModel.currentLogUser)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 58)
-                Button{
-                    userViewModel.currentLogUser?.streak += 1
-                }label: {
-                    Text("add")
-                }
+                
                 ScrollView{
                     VStack{
                         HStack{
@@ -47,11 +45,17 @@ struct HomeView: View {
                         
                         ScrollView([.horizontal]){
                             HStack(spacing: 16){
-                                ForEach(0..<6) { index in
-                                    NavigationLink {
-                                        DetailView(book: Book.sampleData[0])
-                                    } label: {
-                                        CurrentlyReadBookCoverComponent()
+                                if(currentlyReadBooks.isEmpty){
+                                    Text("you haven't read any book")
+                                }
+                                
+                                else{
+                                    ForEach(currentlyReadBooks, id: \.self){ currentlyReadBook in
+                                        NavigationLink {
+                                            DetailView(book: currentlyReadBook.book!)
+                                        } label: {
+                                            CurrentlyReadBookCoverComponent(book: currentlyReadBook.book!)
+                                        }
                                     }
                                 }
                             }
@@ -74,7 +78,11 @@ struct HomeView: View {
                             LazyVGrid(columns: columns, spacing: 24)
                             {
                                 ForEach(allBooks, id: \.self){ book in
-                                    OtherBookCardHomeComponent(book: book)
+                                    NavigationLink{
+                                        DetailView(book: book)
+                                    } label:{
+                                        OtherBookCardHomeComponent(book: book)
+                                    }
                                 }
                             }
                         }
@@ -85,9 +93,21 @@ struct HomeView: View {
             .padding(.top, 38)
             .ignoresSafeArea(edges: .bottom)
             .onAppear{
+                // create user if there is no user for testing.
+                if(allUsers.isEmpty){
+                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 10, preferedGenres: ["development","tech","design"], streak: 0)
+                    
+                    do {
+                        try insertInitialUser(newUser: newUser)
+                        
+                    } catch {
+                        print("failed to insert initial user")
+                    }
+                }
                 
                 if(userViewModel.currentLogUser == nil){
-                    userViewModel.setCurrentLogUser(user: User.sampleData[0])
+                    //                    userViewModel.setCurrentLogUser(user: User.sampleData[0])
+                    userViewModel.setCurrentLogUser(user: allUsers.first!)
                     
                 }
             }
@@ -113,7 +133,11 @@ struct HomeView: View {
         }
         
         try context.save()
-        
+    }
+    
+    func insertInitialUser(newUser : User) throws{
+        context.insert(newUser)
+        try context.save()
     }
 }
 

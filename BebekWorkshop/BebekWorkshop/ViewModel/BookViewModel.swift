@@ -29,7 +29,6 @@ class BookViewModel:ObservableObject{
     
     func addBook(newBook : Book, context : ModelContext){
         context.insert(newBook)
-        print("Trigger")
     }
     
 //    func generateInitialBookData(context : ModelContext) async {
