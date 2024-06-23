@@ -15,7 +15,7 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            SearchBarComponent()
+            SearchBarComponent(user: userViewModel.currentLogUser!)
                 .padding(.horizontal, 20)
             ZStack {
                 UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchBarComponent: View {
     @State var searchTextInput: String = ""
+    var user : User?
+    
     var body: some View {
         HStack (spacing: 25) {
             HStack {
@@ -20,18 +22,33 @@ struct SearchBarComponent: View {
             .background(.white)
             .cornerRadius(50)
             
-            HStack {
-                Image(systemName: "bolt.fill")
-                    .foregroundColor(.tertiaryMexican)
-                Text("1")
-            }
-            
-            Circle()
-                .frame(width: 37, height: 37)
-                .foregroundColor(.white)
-                .overlay(alignment: .center) {
-                    Image(systemName: "person.fill")
+            if(user == nil){
+                HStack {
+                    Image(systemName: "bolt.fill")
+                        .foregroundColor(.tertiaryMexican)
+                    Text("-")
                 }
+                
+                Circle()
+                    .frame(width: 37, height: 37)
+                    .foregroundColor(.white)
+                    .overlay(alignment: .center) {
+                        Image(systemName: "person.fill")
+                    }
+            }else{
+                HStack {
+                    Image(systemName: "bolt.fill")
+                        .foregroundColor(.tertiaryMexican)
+                    Text("\(user!.streak)")
+                }
+                
+                Circle()
+                    .frame(width: 37, height: 37)
+                    .foregroundColor(.white)
+                    .overlay(alignment: .center) {
+                        Image(systemName: "person.fill")
+                    }
+            }
         }
         .padding(20)
         .background(Color.secondaryLightblue)
@@ -42,5 +59,5 @@ struct SearchBarComponent: View {
 }
 
 #Preview {
-    SearchBarComponent()
+    SearchBarComponent(user: User.sampleData[0])
 }

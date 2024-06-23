@@ -11,6 +11,7 @@ import SwiftData
 struct HomeView: View {
     
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var userViewModel : UserViewModel
     @Query var allBooks:[Book]
     
     let columns = [
@@ -19,9 +20,14 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                SearchBarComponent()
+                SearchBarComponent(user: userViewModel.currentLogUser)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 58)
+                Button{
+                    userViewModel.currentLogUser?.streak += 1
+                }label: {
+                    Text("add")
+                }
                 ScrollView{
                     VStack{
                         HStack{
@@ -78,6 +84,13 @@ struct HomeView: View {
             }
             .padding(.top, 38)
             .ignoresSafeArea(edges: .bottom)
+            .onAppear{
+                
+                if(userViewModel.currentLogUser == nil){
+                    userViewModel.setCurrentLogUser(user: User.sampleData[0])
+                    
+                }
+            }
         }
         .onAppear{
             if(allBooks.isEmpty){

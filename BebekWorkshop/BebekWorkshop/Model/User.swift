@@ -31,7 +31,7 @@ class User {
     }
     
     static let sampleData: [User] = [
-        User(name: "User 1", username: "user1", email: "user1@gmail.com", password: "123456", readingGoal: 10, preferedGenres: ["Self-help"], streak: 0),
+        User(name: "User 1", username: "user1", email: "user1@gmail.com", password: "123456", readingGoal: 10, preferedGenres: ["Self-help"], streak: 3),
         User(name: "User 2", username: "user2", email: "user2@gmail.com", password: "123456", readingGoal: 5, preferedGenres: ["Self-help"], streak: 0),
         User(name: "User 3", username: "user3", email: "user3@gmail.com", password: "123456", readingGoal: 8, preferedGenres: ["Self-help"], streak: 0)
     ]

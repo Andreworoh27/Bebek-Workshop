@@ -36,6 +36,6 @@ struct BebekWorkshopApp: App {
                 .modelContainer(sharedModelContainer)
         }
         .environmentObject(userViewModel)
-        
+
     }
 }
