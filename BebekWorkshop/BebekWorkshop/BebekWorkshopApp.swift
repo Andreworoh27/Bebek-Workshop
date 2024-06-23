@@ -14,10 +14,12 @@ struct BebekWorkshopApp: App {
         let schema = Schema([
             User.self,
             Book.self,
-            ReadHistory.self
+            ReadHistory.self,
+            Book.self,
+            Badge.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
@@ -29,11 +31,11 @@ struct BebekWorkshopApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .font(Font.hostGrotesk(typography: .body))
-                
+                .modelContainer(sharedModelContainer)
         }
         .environmentObject(userViewModel)
-        .modelContainer(sharedModelContainer)
+        
     }
 }

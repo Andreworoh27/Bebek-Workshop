@@ -8,21 +8,32 @@
 import SwiftUI
 
 struct OtherBookCardHomeComponent: View {
+    var book:Book
     var body: some View {
         VStack{
-            Image("book-cover-placeholder")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.bottom, 16)
-            Text("Book title")
+            if let coverUrl = book.cover?.url,
+               let imageData = try? Data(contentsOf: coverUrl),
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .frame(width: 177, height: 287)
+                    .padding(.bottom, 16)
+            } else {
+                Image("book-cover-placeholder")
+                    .resizable()
+                    .frame(width: 177, height: 287)
+                    .padding(.bottom, 16)
+            }
+            Text("\(book.title)")
+                .font(Font.hostGrotesk(typography: .body))
                 .bold()
-            Text("Book Author")
+            Text("\(book.authors ?? " ")")
                 .font(Font.hostGrotesk(typography: .caption1))
                 .foregroundStyle(Color.secondaryBlueberry)
         }
     }
 }
 
-#Preview {
-    OtherBookCardHomeComponent()
-}
+//#Preview {
+//    OtherBookCardHomeComponent()
+//}

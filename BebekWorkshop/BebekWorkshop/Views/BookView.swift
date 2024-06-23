@@ -57,5 +57,5 @@ struct BookView: View {
         BookView(book: Book.sampleData[0])
     }
     .environmentObject(UserViewModel())
-    .modelContainer(SampleData.shared.modelContainer)
+//    .modelContainer(SampleData.shared.modelContainer)
 }

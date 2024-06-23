@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+    
+    @Environment(\.modelContext) private var context
+    @Query var allBooks:[Book]
+    
     let columns = [
         GridItem(.adaptive(minimum: 177))
     ]
@@ -62,12 +67,9 @@ struct HomeView: View {
                             // create container to wrap books.
                             LazyVGrid(columns: columns, spacing: 24)
                             {
-                                OtherBookCardHomeComponent()
-                                OtherBookCardHomeComponent()
-                                OtherBookCardHomeComponent()
-                                OtherBookCardHomeComponent()
-                                OtherBookCardHomeComponent()
-                                OtherBookCardHomeComponent()
+                                ForEach(allBooks, id: \.self){ book in
+                                    OtherBookCardHomeComponent(book: book)
+                                }
                             }
                         }
                         .padding([.bottom, .leading, .trailing], 40)
@@ -77,9 +79,33 @@ struct HomeView: View {
             .padding(.top, 38)
             .ignoresSafeArea(edges: .bottom)
         }
+        .onAppear{
+            if(allBooks.isEmpty){
+                Task{
+                    do{
+                        try await generateInitialBooksData()
+                    }catch{
+                        print("failed to generate book in homeview")
+                    }
+                }
+                print("\(context.insertedModelsArray.count)")
+            }
+        }
+    }
+    
+    func generateInitialBooksData()async throws{
+        let books = await generateBook()
+        for book in books {
+            context.insert(book)
+        }
+        
+        try context.save()
+        
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

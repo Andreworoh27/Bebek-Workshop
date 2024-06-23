@@ -50,9 +50,6 @@ struct DetailView: View {
 }
 
 #Preview {
-    NavigationStack {
-        DetailView(book: Book.sampleData[0])
-    }
-    .environmentObject(UserViewModel())
-    .modelContainer(SampleData.shared.modelContainer)
+        DetailView(book: Book.sampleData[0])    .environmentObject(UserViewModel())
+//    .modelContainer(SampleData.shared.modelContainer)
 }
