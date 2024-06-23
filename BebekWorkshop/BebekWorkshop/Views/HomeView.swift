@@ -17,6 +17,7 @@ struct HomeView: View {
         GridItem(.adaptive(minimum: 177))
     ]
     var body: some View {
+<<<<<<< HEAD
         VStack {
             SearchBarComponent()
                 .padding(.bottom, 58)
@@ -60,26 +61,80 @@ struct HomeView: View {
                         .padding(.bottom, 58)
                     
                     VStack {
+=======
+        NavigationStack {
+            VStack {
+                SearchBarComponent()
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 58)
+                ScrollView{
+                    VStack{
+>>>>>>> development
                         HStack{
-                            Text("Other Books You Might Like")
+                            Text("Currently Reading")
                                 .font(Font.hostGrotesk(typography: .largeTitle))
                                 .bold()
+                            
                             Spacer()
+                            
+                            Text("\("10") minutes left")
+                                .font(Font.hostGrotesk(typography: .headline))
+                            
+                            Text("to hit your goal")
+                                .font(Font.hostGrotesk(typography: .body))
                         }
-                        .padding(.bottom, 29)
+                        .padding(.horizontal, 40.0)
                         
+<<<<<<< HEAD
                         // create container to wrap books.
                         LazyVGrid(columns: columns, spacing: 10)
                         {
 
                             ForEach(allBooks, id: \.self){ book in
                                 OtherBookCardHomeComponent(book: book)
+=======
+                        ScrollView([.horizontal]){
+                            HStack(spacing: 16){
+                                ForEach(0..<6) { index in
+                                    NavigationLink {
+                                        DetailView(book: Book.sampleData[0])
+                                    } label: {
+                                        CurrentlyReadBookCoverComponent()
+                                    }
+                                }
+>>>>>>> development
                             }
                         }
+                        .padding(EdgeInsets(top: 0, leading: 40, bottom: 38, trailing: -40))
+                        
+                        DailyGoalHomeProgressComponent()
+                            .padding(.bottom, 58)
+                        
+                        VStack {
+                            HStack{
+                                Text("Other Books You Might Like")
+                                    .font(Font.hostGrotesk(typography: .largeTitle))
+                                    .bold()
+                                Spacer()
+                            }
+                            .padding(.bottom, 29)
+                            
+                            // create container to wrap books.
+                            LazyVGrid(columns: columns, spacing: 24)
+                            {
+                                OtherBookCardHomeComponent()
+                                OtherBookCardHomeComponent()
+                                OtherBookCardHomeComponent()
+                                OtherBookCardHomeComponent()
+                                OtherBookCardHomeComponent()
+                                OtherBookCardHomeComponent()
+                            }
+                        }
+                        .padding([.bottom, .leading, .trailing], 40)
                     }
-                    .padding([.bottom, .leading, .trailing], 40)
                 }
             }
+<<<<<<< HEAD
             
         }
         .onAppear{
@@ -93,8 +148,11 @@ struct HomeView: View {
                 }
                 print("\(context.insertedModelsArray.count)")
             }
+=======
+            .padding(.top, 38)
+            .ignoresSafeArea(edges: .bottom)
+>>>>>>> development
         }
-        .padding(.top, 38)
     }
     
     func generateInitialBooksData()async throws{

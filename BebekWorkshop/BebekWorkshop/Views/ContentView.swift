@@ -9,7 +9,36 @@
 //import SwiftData
 //
 //
+<<<<<<< HEAD
 //struct ContentView: View {
+=======
+
+import SwiftUI
+import SwiftData
+
+
+struct ContentView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    var body: some View {
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+            HistoryView().tabItem {
+                    Label("History", systemImage: "list.bullet.rectangle.portrait")
+                }
+                .tag(1)
+        }
+        .font(Font.hostGrotesk(typography: .body))
+    }
+}
+
+//struct HomeViewTest: View {
+//    @Query private var books: [Book]
+>>>>>>> development
 //    @EnvironmentObject var userViewModel: UserViewModel
 //    
 //    var body: some View {
@@ -26,6 +55,7 @@
 //        }
 //    }
 //}
+<<<<<<< HEAD
 //
 ////struct HomeViewTest: View {
 ////    @Query private var books: [Book]
@@ -113,3 +143,73 @@
 //        .environmentObject(UserViewModel())
 //        .modelContainer(SampleData.shared.modelContainer)
 //}
+=======
+
+struct HistoryView: View {
+    @Query private var readHistories: [ReadHistory]
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    @Query private var reviews: [Review]
+    
+    var totalReadingMinutesToday: Int {
+        ReadHistory.accumulateReadingMinutesToday(readHistories: readHistories)
+    }
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(readHistories) { history in
+                    NavigationLink {
+                        VStack {
+                            Text(history.user?.name ?? "Tidak ada")
+                            Text(history.book?.title ?? "Tidak ada")
+                            Text(String(history.minutesRead))
+                            Text(history.readDate.toString())
+                        }
+                    } label: {
+                        Text(history.readDate.toString())
+                    }
+                }
+                
+                ForEach(reviews) { review in
+                    NavigationLink {
+                        VStack {
+                            Text(review.user?.name ?? "Tidak ada")
+                            Text(review.book?.title ?? "Tidak ada")
+                            Text(String(review.rating))
+                            Text(review.reviewText)
+                        }
+                    } label: {
+                        Text(review.reviewText)
+                    }
+                }
+
+            }
+            .navigationTitle("\(totalReadingMinutesToday)/\(User.sampleData[0].readingGoal) Minutes Today")
+        }
+    }
+}
+
+struct CategoryItem: View {
+    var book: Book
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Image(book.image)
+                .resizable()
+                .frame(height: 205)
+                .cornerRadius(5)
+            Text(book.title)
+                .font(.caption)
+        }
+        .padding(.leading, 15)
+        .frame(width: 155)
+    }
+}
+
+#Preview {
+    ContentView()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
+}
+>>>>>>> development

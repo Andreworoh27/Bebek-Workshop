@@ -112,9 +112,9 @@ enum HostGroteskFont : String{
         
         switch self {
         case .largeTitle:
-            ("HostGrotesk-Regular",34)
+            ("HostGrotesk-Bold",34)
         case .title1:
-            ("HostGrotesk-Regular",28)
+            ("HostGrotesk-Bold",28)
         case .title2:
             ("HostGrotesk-Regular" ,22)
         case .title3:

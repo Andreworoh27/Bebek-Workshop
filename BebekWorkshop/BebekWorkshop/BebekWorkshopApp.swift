@@ -30,6 +30,7 @@ struct BebekWorkshopApp: App {
     
     var body: some Scene {
         WindowGroup {
+<<<<<<< HEAD
             //            ContentView()
             HomeView()
                 .modelContainer(for: [
@@ -39,6 +40,11 @@ struct BebekWorkshopApp: App {
                     Badge.self,
                     ReadHistory.self
                 ])
+=======
+            ContentView()
+                .font(Font.hostGrotesk(typography: .body))
+                
+>>>>>>> development
         }
 //        .environmentObject(userViewModel)
         
