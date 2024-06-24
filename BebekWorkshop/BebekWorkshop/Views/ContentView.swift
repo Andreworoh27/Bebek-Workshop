@@ -38,14 +38,18 @@ struct HistoryView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     
     var totalReadingMinutesToday: Int {
+        
         ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.currentLogUser?.histories ?? [])
+        
     }
     
     var body: some View {
+        
         NavigationStack {
             List {
                 Section("User View Model") {
                     ForEach(userViewModel.currentLogUser?.histories ?? readHistories) { history in
+                        
                         NavigationLink {
                             VStack {
                                 Text(history.user?.name ?? "Tidak ada")

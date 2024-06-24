@@ -99,10 +99,33 @@ struct HomeView: View {
             .padding(.top, 38)
             .ignoresSafeArea(edges: .bottom)
             .onAppear{
-                if(userViewModel.currentLogUser == nil){
-                    print()
-                    userViewModel.setCurrentLogUser(user: User.sampleData[0])
+                // create user if there is no user for testing.
+                if(allUsers.isEmpty){
+                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 10, preferedGenres: ["development","tech","design"], streak: 0)
                     
+                    do {
+                        try insertInitialUser(newUser: newUser)
+                        
+                    } catch {
+                        print("failed to insert initial user")
+                    }
+                }
+                
+                if(userViewModel.currentLogUser == nil){
+                    //                    userViewModel.setCurrentLogUser(user: User.sampleData[0])
+                    userViewModel.setCurrentLogUser(user: allUsers.first!)
+                    
+                }
+                
+                if(allBooks.isEmpty){
+                    Task{
+                        do {
+                            try await generateInitialBooksData()
+
+                        } catch {
+                            print("failed to generate initial books")
+                        }
+                    }
                 }
             }
         }

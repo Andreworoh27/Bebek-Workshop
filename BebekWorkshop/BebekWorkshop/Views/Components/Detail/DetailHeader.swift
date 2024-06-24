@@ -59,16 +59,16 @@ struct DetailHeader: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let exist = checkIfBookExistInDatabase()
-                        if !exist {
-                            let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
-                            context.insert(readHistory)
-                            do {
-                                try context.save()
-                            } catch {
-                                print("failed to save reading history when open book")
-                            }
-                        }
+//                        let exist = checkIfBookExistInDatabase()
+//                        if !exist {
+//                            let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
+//                            context.insert(readHistory)
+//                            do {
+//                                try context.save()
+//                            } catch {
+//                                print("failed to save reading history when open book")
+//                            }
+//                        }
                         
                         Task{
                             await previewBook()
