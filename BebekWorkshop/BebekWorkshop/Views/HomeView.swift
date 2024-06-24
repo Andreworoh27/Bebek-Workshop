@@ -23,9 +23,21 @@ struct HomeView: View {
     @Query var allUsers:[User]
     @Query var currentlyReadBooks : [ReadHistory]
     
+    @State var showAlert: Bool = false
+    
     let columns = [
         GridItem(.adaptive(minimum: 177))
     ]
+    
+    var timeUntilGoalReached: Int {
+        let time = userViewModel.userReadingGoal - ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.userHistories)
+        
+        if time > 0 {
+            return time
+        } else {
+            return 0
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -43,7 +55,7 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        Text("\("10") minutes left")
+                        Text("\(timeUntilGoalReached) minutes left")
                             .font(Font.hostGrotesk(typography: .headline))
                         
                         Text("to hit your goal")
@@ -101,7 +113,7 @@ struct HomeView: View {
             .onAppear{
                 // create user if there is no user for testing.
                 if(allUsers.isEmpty){
-                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 10, preferedGenres: ["development","tech","design"], streak: 0)
+                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 3, preferedGenres: ["development","tech","design"], streak: 0)
                     
                     do {
                         try insertInitialUser(newUser: newUser)
@@ -128,6 +140,13 @@ struct HomeView: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $userViewModel.showAlert) {
+            Alert(
+                title: Text("Congratulations!"),
+                message: Text("You have achieved your goal!"),
+                dismissButton: .default(Text("Awesome!"))
+            )
         }
     }
     

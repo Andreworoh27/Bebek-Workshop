@@ -29,9 +29,9 @@ class SampleData {
         
         do {
             modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
-            Task {
-                try await insertSampleData()
-            }
+//            Task {
+//                try await insertSampleData()
+//            }
         } catch {
             fatalError("Error on SampleData: \(error)")
         }

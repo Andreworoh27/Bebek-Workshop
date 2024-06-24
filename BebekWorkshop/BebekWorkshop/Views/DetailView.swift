@@ -11,7 +11,6 @@ import ReadiumNavigator
 
 struct DetailView: View {
     @Environment(\.modelContext) private var context
-    @State var showAlert: Bool = false
     @EnvironmentObject var userViewModel : UserViewModel
     
     @State private var epubViewController : EPUBNavigatorViewController? = nil
@@ -21,13 +20,12 @@ struct DetailView: View {
     var body: some View {
         VStack {
             if epubViewController == nil{
-                Text("\(epubViewController == nil)")
                 SearchBarComponent(user: userViewModel.currentLogUser ?? User.sampleData[0])
                     .padding(.horizontal, 20)
                 ZStack {
                     UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)
                         .foregroundColor(Color.secondaryLightblueBackground)
-                        .padding(.top, 190)
+                        .padding(.top, 210)
                     VStack {
                         
                         DetailHeader(epubViewController: $epubViewController, book: book)
@@ -44,13 +42,6 @@ struct DetailView: View {
                     .padding(32)
                 }
                 .padding([.leading, .top, .trailing], 40)
-    //            .alert(isPresented: $userViewModel.showAlert) {
-    //                Alert(
-    //                    title: Text("Congratulations!"),
-    //                    message: Text("You have achieved your goal!"),
-    //                    dismissButton: .default(Text("Awesome!"))
-    //                )
-    //            }
             }else{
                     BookView(book: book, epubViewController: $epubViewController)                
             }

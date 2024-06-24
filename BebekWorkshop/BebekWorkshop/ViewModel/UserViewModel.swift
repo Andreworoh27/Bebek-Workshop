@@ -13,6 +13,14 @@ class UserViewModel: ObservableObject {
     @Published var showAlert: Bool
     @Published var alertHasShown: Bool
     
+    var userHistories: [ReadHistory] {
+        currentLogUser?.histories ?? []
+    }
+    
+    var userReadingGoal: Int {
+        currentLogUser?.readingGoal ?? 0
+    }
+    
     init() {
         self.showAlert = false
         self.alertHasShown = false

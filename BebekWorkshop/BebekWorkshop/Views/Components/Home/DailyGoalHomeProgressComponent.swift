@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DailyGoalHomeProgressComponent: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @Query private var readHistories: [ReadHistory]
     
     var totalReadingMinutesToday: Int {
-        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.currentLogUser?.histories ?? [])
+        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.userHistories)
     }
     
     var body: some View {
@@ -43,7 +45,7 @@ struct DailyGoalHomeProgressComponent: View {
                     HStack(spacing: 22) {
                         VStack(alignment: .leading) {
                             Text("Today’s Time")
-                            Text("\(ReadHistory.accumulateReadingMinutesToday(readHistories: User.sampleData[0].histories)) minutes")
+                            Text("\(totalReadingMinutesToday) minutes")
                                 .font(Font.hostGrotesk(typography: .title1))
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
@@ -51,7 +53,7 @@ struct DailyGoalHomeProgressComponent: View {
                             .frame(height: 48)
                         VStack(alignment: .leading) {
                             Text("Your Goal")
-                            Text("\(User.sampleData[0].readingGoal) minutes")
+                            Text("\(userViewModel.userReadingGoal) minutes")
                                 .font(Font.hostGrotesk(typography: .title1))
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }

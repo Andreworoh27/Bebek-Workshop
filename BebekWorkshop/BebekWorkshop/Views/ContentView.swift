@@ -39,7 +39,7 @@ struct HistoryView: View {
     
     var totalReadingMinutesToday: Int {
         
-        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.currentLogUser?.histories ?? [])
+        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.userHistories)
         
     }
     
@@ -48,7 +48,7 @@ struct HistoryView: View {
         NavigationStack {
             List {
                 Section("User View Model") {
-                    ForEach(userViewModel.currentLogUser?.histories ?? readHistories) { history in
+                    ForEach(readHistories) { history in
                         
                         NavigationLink {
                             VStack {
@@ -64,7 +64,7 @@ struct HistoryView: View {
                 }
                 
                 Section("Swift Data") {
-                    ForEach(User.sampleData[0].histories) { history in
+                    ForEach(userViewModel.userHistories) { history in
                         NavigationLink {
                             VStack {
                                 Text(history.user?.name ?? "Tidak ada")
@@ -79,7 +79,7 @@ struct HistoryView: View {
                 }
 
             }
-            .navigationTitle("\(totalReadingMinutesToday)/\(userViewModel.currentLogUser?.readingGoal ?? 0) Minutes Today")
+            .navigationTitle("\(totalReadingMinutesToday)/\(userViewModel.userReadingGoal) Minutes Today")
         }
     }
 }

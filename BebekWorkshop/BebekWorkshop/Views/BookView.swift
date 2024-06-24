@@ -18,16 +18,13 @@ struct BookView: View {
     
     var body: some View {
         VStack {
-            
             ReaderViewContainer(vc: epubViewController)
-//            Text("Pengguna \(User.sampleData[0].name) lagi baca buku")
-//            Text(readingViewModel.durationCounter.elapsedTime)
         }
         .onAppear(perform: {
             readingViewModel.toggleTracking()
         })
         .onDisappear(perform: {
-            let minutes = readingViewModel.durationCounter.seconds > 5 ? readingViewModel.durationCounter.minutes + 1 : readingViewModel.durationCounter.minutes
+            let minutes = readingViewModel.durationCounter.seconds > 0 ? readingViewModel.durationCounter.minutes + 1 : readingViewModel.durationCounter.minutes
             let newReadHistory = ReadHistory(
                 minutesRead: minutes,
                 currentPage: 5,
@@ -46,7 +43,7 @@ struct BookView: View {
                 print("Error when inserting sample data: \(error)")
             }
             
-            if (ReadHistory.accumulateReadingMinutesToday(readHistories: User.sampleData[0].histories) >= User.sampleData[0].readingGoal && userViewModel.alertHasShown == false)
+            if (ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.userHistories) >= userViewModel.userReadingGoal && userViewModel.alertHasShown == false)
             {
                 userViewModel.showAlert = true
                 userViewModel.alertHasShown = true
