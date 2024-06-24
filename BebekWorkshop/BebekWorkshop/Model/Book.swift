@@ -23,7 +23,7 @@ class Book {
     /// Location of the cover.
     var coverPath: String?
     
-//    /// Last read location in the publication.
+    /// Last read location in the publication.
 //    var locator: Locator? {
 //        didSet { progression = locator?.locations.totalProgression ?? 0 }
 //    }

@@ -7,45 +7,53 @@
 
 import SwiftUI
 import SwiftData
+import ReadiumNavigator
 
 struct DetailView: View {
     @Environment(\.modelContext) private var context
     @State var showAlert: Bool = false
     @EnvironmentObject var userViewModel : UserViewModel
     
+    @State private var epubViewController : EPUBNavigatorViewController? = nil
+    
     var book: Book
     
     var body: some View {
         VStack {
-            SearchBarComponent(user: userViewModel.currentLogUser ?? User.sampleData[0])
-                .padding(.horizontal, 20)
-            ZStack {
-                UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)
-                    .foregroundColor(Color.secondaryLightblueBackground)
-                    .padding(.top, 190)
-                VStack {
-                    
-                    DetailHeader(book: book)
-                    
-                    BookSynopsis(
-                        text: "It is no small matter, after all, to create something—to make it so only by setting down the words. We forget the magnitude, sometimes, of that miracle. In the dead of night, shots ring out over the grounds of a sprawling English estate. The world-weary butler Eustace recognizes the gunman—his longtime employer, Mr. Crowe—and knows he must think and act quickly. Who is the man lying dead on the lawn? Who is the woman in his company? Can he clean up his master’s mess like he always has before? Or will this bring a new kind of reckoning?"
-                    )
-                    .padding(.bottom, 65)
-                    
-                    BookReviews()
-                    
-                    Spacer()
+            if epubViewController == nil{
+                Text("\(epubViewController == nil)")
+                SearchBarComponent(user: userViewModel.currentLogUser ?? User.sampleData[0])
+                    .padding(.horizontal, 20)
+                ZStack {
+                    UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)
+                        .foregroundColor(Color.secondaryLightblueBackground)
+                        .padding(.top, 190)
+                    VStack {
+                        
+                        DetailHeader(epubViewController: $epubViewController, book: book)
+                        
+                        BookSynopsis(
+                            text: "It is no small matter, after all, to create something—to make it so only by setting down the words. We forget the magnitude, sometimes, of that miracle. In the dead of night, shots ring out over the grounds of a sprawling English estate. The world-weary butler Eustace recognizes the gunman—his longtime employer, Mr. Crowe—and knows he must think and act quickly. Who is the man lying dead on the lawn? Who is the woman in his company? Can he clean up his master’s mess like he always has before? Or will this bring a new kind of reckoning?"
+                        )
+                        .padding(.bottom, 65)
+                        
+                        BookReviews()
+                        
+                        Spacer()
+                    }
+                    .padding(32)
                 }
-                .padding(32)
+                .padding([.leading, .top, .trailing], 40)
+    //            .alert(isPresented: $userViewModel.showAlert) {
+    //                Alert(
+    //                    title: Text("Congratulations!"),
+    //                    message: Text("You have achieved your goal!"),
+    //                    dismissButton: .default(Text("Awesome!"))
+    //                )
+    //            }
+            }else{
+                    BookView(book: book, epubViewController: $epubViewController)                
             }
-            .padding([.leading, .top, .trailing], 40)
-//            .alert(isPresented: $userViewModel.showAlert) {
-//                Alert(
-//                    title: Text("Congratulations!"),
-//                    message: Text("You have achieved your goal!"),
-//                    dismissButton: .default(Text("Awesome!"))
-//                )
-//            }
         }
         .padding(.top, 38)
         .ignoresSafeArea(edges: .bottom)

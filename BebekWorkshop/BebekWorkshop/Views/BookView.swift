@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ReadiumNavigator
 
 struct BookView: View {
     var book: Book
@@ -13,11 +14,14 @@ struct BookView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     
     @Environment(\.modelContext) private var context
+    @Binding var epubViewController : EPUBNavigatorViewController?
     
     var body: some View {
         VStack {
-            Text("Pengguna \(User.sampleData[0].name) lagi baca buku")
-            Text(readingViewModel.durationCounter.elapsedTime)
+            
+            ReaderViewContainer(vc: epubViewController)
+//            Text("Pengguna \(User.sampleData[0].name) lagi baca buku")
+//            Text(readingViewModel.durationCounter.elapsedTime)
         }
         .onAppear(perform: {
             readingViewModel.toggleTracking()
@@ -52,10 +56,10 @@ struct BookView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        BookView(book: Book.sampleData[0])
-    }
-    .environmentObject(UserViewModel())
-//    .modelContainer(SampleData.shared.modelContainer)
-}
+//#Preview {
+//    NavigationStack {
+//        BookView(book: Book.sampleData[0])
+//    }
+//    .environmentObject(UserViewModel())
+////    .modelContainer(SampleData.shared.modelContainer)
+//}

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import ReadiumNavigator
+import ReadiumAdapterGCDWebServer
 
 struct DetailHeader: View {
     @Environment(\.modelContext) private var context
@@ -15,6 +17,7 @@ struct DetailHeader: View {
     //        history.book == book && history.user == userViewModel.currentLogUser
     //    }) let readHistories : [ReadHistory]
     @Query var readHistories : [ReadHistory]
+    @Binding  var epubViewController : EPUBNavigatorViewController?
 
     var book: Book
     var body: some View {
@@ -56,8 +59,7 @@ struct DetailHeader: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        
-                        var exist = checkIfBookExistInDatabase()
+                        let exist = checkIfBookExistInDatabase()
                         if !exist {
                             let readHistory = ReadHistory(user: userViewModel.currentLogUser,book:book, minutesRead: 0, currentPage: 0, bookStatus: "read", readDate: Date.now)
                             context.insert(readHistory)
@@ -67,6 +69,12 @@ struct DetailHeader: View {
                                 print("failed to save reading history when open book")
                             }
                         }
+                        
+                        Task{
+                            await previewBook()
+                        }
+                        
+                        
                     }, label: {
                         Text("Start Reading")
                             .font(Font.hostGrotesk(typography: .headline))
@@ -131,8 +139,20 @@ struct DetailHeader: View {
         }
         return valid
     }
+    
+    func previewBook() async{
+        let bookService = BookServices()
+        do {
+            let pub = try await bookService.openBook(book)
+            let readerViewController = try EPUBNavigatorViewController(publication: pub, initialLocation: nil, httpServer: GCDHTTPServer.shared)
+            epubViewController = readerViewController
+            
+        } catch{
+            print("preview book error")
+        }
+    }
 }
 
-#Preview {
-    DetailHeader(book: Book.sampleData[0])
-}
+//#Preview {
+//    DetailHeader(book: Book.sampleData[0], epubViewController: .constant(EPUBNavigatorViewController()))
+//}

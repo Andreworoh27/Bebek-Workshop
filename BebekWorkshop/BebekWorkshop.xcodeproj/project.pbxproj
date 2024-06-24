@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC562E5F2C29317C0048E8E1 /* ReaderViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC562E5E2C29317C0048E8E1 /* ReaderViewContainer.swift */; };
 		AC622D072C267AB000E211EC /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC622D062C267AB000E211EC /* Path.swift */; };
 		AC622D0B2C2685B200E211EC /* BookDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC622D0A2C2685B200E211EC /* BookDataGenerator.swift */; };
 		AC622D1D2C26922B00E211EC /* BookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC622D1C2C26922B00E211EC /* BookServices.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC562E5E2C29317C0048E8E1 /* ReaderViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewContainer.swift; sourceTree = "<group>"; };
 		AC622D062C267AB000E211EC /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		AC622D0A2C2685B200E211EC /* BookDataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataGenerator.swift; sourceTree = "<group>"; };
 		AC622D1C2C26922B00E211EC /* BookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServices.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC562E5D2C2931680048E8E1 /* Book Reader */ = {
+			isa = PBXGroup;
+			children = (
+				AC562E5E2C29317C0048E8E1 /* ReaderViewContainer.swift */,
+			);
+			path = "Book Reader";
+			sourceTree = "<group>";
+		};
 		AC78119D2C1839070036235B = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 		ACE256042C241724002CC233 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AC562E5D2C2931680048E8E1 /* Book Reader */,
 				CD8D95A52C26A2D90013AE53 /* Detail */,
 				CD8D95A42C26A2C60013AE53 /* Home */,
 				ACE256052C241769002CC233 /* SearchBarComponent.swift */,
@@ -393,6 +404,7 @@
 				CD8D95A92C26CC5E0013AE53 /* BookSynopsis.swift in Sources */,
 				CD8D95AB2C26CC7B0013AE53 /* BookReviews.swift in Sources */,
 				CDEC23AD2C1B224800A83A59 /* DurationCounter.swift in Sources */,
+				AC562E5F2C29317C0048E8E1 /* ReaderViewContainer.swift in Sources */,
 				AC7811C12C183CFE0036235B /* ReadHistory.swift in Sources */,
 				ACE2562C2C266E89002CC233 /* BookViewModel.swift in Sources */,
 				CD8D95A72C26CC3B0013AE53 /* DetailHeader.swift in Sources */,
