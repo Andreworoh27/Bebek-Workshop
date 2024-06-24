@@ -29,7 +29,7 @@ class ReadHistory{
     static let sampleData = [
         ReadHistory(minutesRead: 4, currentPage: 4, bookStatus: "reading", readDate: Date()),
         ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: ISO8601DateFormatter().date(from: "2024-06-18T00:00:00Z") ?? Date()),
-        ReadHistory(minutesRead: 5, currentPage: 3, bookStatus: "reading", readDate: Date())
+        ReadHistory(minutesRead: 4, currentPage: 3, bookStatus: "reading", readDate: Date())
     ]
 }
 
@@ -72,5 +72,19 @@ extension ReadHistory {
             return false
         }
         
+    }
+    
+    static func getCurrentReadingBooks(user: User) -> [Book] {
+        let readingHistories = user.histories.filter { $0.bookStatus == "reading" }
+        let readingBooks = readingHistories.compactMap { $0.book }
+        
+        // Use a dictionary to ensure each book is unique
+        var uniqueBooksDict = [String: Book]()
+        
+        for book in readingBooks {
+            uniqueBooksDict[book.identifier!] = book
+        }
+        
+        return Array(uniqueBooksDict.values)
     }
 }

@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct DailyGoalHomeProgressComponent: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
+    var totalReadingMinutesToday: Int {
+        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.currentLogUser?.histories ?? [])
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -19,7 +25,7 @@ struct DailyGoalHomeProgressComponent: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 140)
-                    CircularProgressComponent(progress: 0.65)
+                    CircularProgressComponent(progress: Double(totalReadingMinutesToday)/Double(userViewModel.currentLogUser?.readingGoal ?? 1))
                 }
                 .padding(.trailing, 48)
                        
@@ -37,7 +43,7 @@ struct DailyGoalHomeProgressComponent: View {
                     HStack(spacing: 22) {
                         VStack(alignment: .leading) {
                             Text("Today’s Time")
-                            Text("7 minutes")
+                            Text("\(ReadHistory.accumulateReadingMinutesToday(readHistories: User.sampleData[0].histories)) minutes")
                                 .font(Font.hostGrotesk(typography: .title1))
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
@@ -45,14 +51,16 @@ struct DailyGoalHomeProgressComponent: View {
                             .frame(height: 48)
                         VStack(alignment: .leading) {
                             Text("Your Goal")
-                            Text("10 minutes")
+                            Text("\(User.sampleData[0].readingGoal) minutes")
                                 .font(Font.hostGrotesk(typography: .title1))
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
                         Spacer()
                     }
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        print(ReadHistory.getCurrentReadingBooks(user: User.sampleData[0]))
+                    }, label: {
                         Text("Edit Goal")
                     })
                     .padding(.vertical, 8)
@@ -74,4 +82,6 @@ struct DailyGoalHomeProgressComponent: View {
 
 #Preview {
     DailyGoalHomeProgressComponent()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

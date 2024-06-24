@@ -34,10 +34,11 @@ struct BookView: View {
                 bookStatus: "reading",
                 readDate: Date()
             )
+            
             context.insert(newReadHistory)
             
             newReadHistory.book = book
-            newReadHistory.user = User.sampleData[0]
+            newReadHistory.user = userViewModel.currentLogUser
             
             do {
                 try context.save()

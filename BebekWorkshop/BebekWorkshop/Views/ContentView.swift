@@ -33,66 +33,49 @@ struct ContentView: View {
     }
 }
 
-//struct HomeViewTest: View {
-//    @Query private var books: [Book]
-//    @EnvironmentObject var userViewModel: UserViewModel
-//    
-//    var body: some View {
-//        TabView {
-//            HomeView()
-//                .tabItem {
-//                    Label("Home", systemImage: "house.fill")
-//                }
-//                .tag(0)
-//            HistoryView().tabItem {
-//                Label("History", systemImage: "list.bullet.rectangle.portrait")
-//            }
-//            .tag(1)
-//        }
-//    }
-//}
-
 struct HistoryView: View {
     @Query private var readHistories: [ReadHistory]
     @EnvironmentObject var userViewModel: UserViewModel
     
-    @Query private var reviews: [Review]
-    
     var totalReadingMinutesToday: Int {
-        ReadHistory.accumulateReadingMinutesToday(readHistories: readHistories)
+        ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.currentLogUser?.histories ?? [])
     }
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(readHistories) { history in
-                    NavigationLink {
-                        VStack {
-                            Text(history.user?.name ?? "Tidak ada")
-                            Text(history.book?.title ?? "Tidak ada")
-                            Text(String(history.minutesRead))
+                Section("User View Model") {
+                    ForEach(userViewModel.currentLogUser?.histories ?? readHistories) { history in
+                        NavigationLink {
+                            VStack {
+                                Text(history.user?.name ?? "Tidak ada")
+                                Text(history.book?.title ?? "Tidak ada")
+                                Text(String(history.minutesRead))
+                                Text(history.readDate.toString())
+                            }
+                        } label: {
                             Text(history.readDate.toString())
                         }
-                    } label: {
-                        Text(history.readDate.toString())
                     }
                 }
                 
-                ForEach(reviews) { review in
-                    NavigationLink {
-                        VStack {
-                            Text(review.user?.name ?? "Tidak ada")
-                            Text(review.book?.title ?? "Tidak ada")
-                            Text(String(review.rating))
-                            Text(review.reviewText)
+                Section("Swift Data") {
+                    ForEach(User.sampleData[0].histories) { history in
+                        NavigationLink {
+                            VStack {
+                                Text(history.user?.name ?? "Tidak ada")
+                                Text(history.book?.title ?? "Tidak ada")
+                                Text(String(history.minutesRead))
+                                Text(history.readDate.toString())
+                            }
+                        } label: {
+                            Text(history.readDate.toString())
                         }
-                    } label: {
-                        Text(review.reviewText)
                     }
                 }
 
             }
-            .navigationTitle("\(totalReadingMinutesToday)/\(User.sampleData[0].readingGoal) Minutes Today")
+            .navigationTitle("\(totalReadingMinutesToday)/\(userViewModel.currentLogUser?.readingGoal ?? 0) Minutes Today")
         }
     }
 }

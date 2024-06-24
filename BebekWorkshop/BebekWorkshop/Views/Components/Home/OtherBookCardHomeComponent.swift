@@ -26,6 +26,7 @@ struct OtherBookCardHomeComponent: View {
             }
             Text("\(book.title)")
                 .font(Font.hostGrotesk(typography: .body))
+                .foregroundColor(Color.primaryOreo)
                 .bold()
             Text("\(book.authors ?? " ")")
                 .font(Font.hostGrotesk(typography: .caption1))

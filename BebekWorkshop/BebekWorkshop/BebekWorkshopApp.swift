@@ -15,7 +15,6 @@ struct BebekWorkshopApp: App {
             User.self,
             Book.self,
             ReadHistory.self,
-            Book.self,
             Badge.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -31,7 +30,7 @@ struct BebekWorkshopApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ContentView()
                 .font(Font.hostGrotesk(typography: .body))
                 .modelContainer(sharedModelContainer)
         }
