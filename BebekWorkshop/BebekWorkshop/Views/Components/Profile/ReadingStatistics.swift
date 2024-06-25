@@ -9,7 +9,9 @@ import SwiftUI
 import Charts
 
 struct ReadingStatistics: View {
-    var dataCollection: ChartViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @State var readingData: [Date : Int] = [:]
+    
     var body: some View {
         VStack{
             HStack {
@@ -28,24 +30,38 @@ struct ReadingStatistics: View {
                 .padding(EdgeInsets(top: 0, leading: 40, bottom: 8, trailing: 0))
                 Spacer()
             }
-            Chart(dataCollection.data){
-                LineMark(
-                    x: .value("Day", $0 .day),
-                    y: .value("Total", $0 .minutes)
-                )
-                
-                .symbol {
-                    Circle()
-                        .fill(Color.secondaryBlueberry)
-                        .frame(width: 8)
+            Chart {
+                ForEach(readingData.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+                    LineMark(
+                        x: .value("Day", key),
+                        y: .value("Total", value)
+                    )
+                    .foregroundStyle(.mint)
+                }
+            }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .day)) { value in
+                    AxisGridLine()
+                    AxisValueLabel {
+                        if let dateValue = value.as(Date.self) {
+                            Text("\(Calendar.current.component(.day, from: dateValue))")
+                        }
+                    }
                 }
             }
             .padding(.horizontal, 50.0)
             .frame(height: 200)
             .background()
+            
         }
+        .onAppear(perform: {
+            readingData = ReadHistory.accumulateReadingTimeLastWeek(readHistories: userViewModel.userHistories)
+            print(readingData)
+        })
     }
 }
 #Preview {
-    ReadingStatistics(dataCollection: ChartViewModel())
+    ReadingStatistics()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

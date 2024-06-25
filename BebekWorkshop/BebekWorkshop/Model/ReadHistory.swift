@@ -51,7 +51,15 @@ extension ReadHistory {
             readHistories.reduce(0) { (currentSum, history) in currentSum + history.minutesRead }
         }
         
-        return totalMinutesReadPerDay
+        // Ensure all days in the last week are included with at least 0 minutes
+        var result: [Date: Int] = [:]
+        for dayOffset in 0...6 {
+            if let date = calendar.date(byAdding: .day, value: -dayOffset, to: today) {
+                result[date] = totalMinutesReadPerDay[calendar.startOfDay(for: date)] ?? 0
+            }
+        }
+        
+        return result
     }
     
     static func accumulateReadingMinutesToday(readHistories: [ReadHistory]) -> Int {

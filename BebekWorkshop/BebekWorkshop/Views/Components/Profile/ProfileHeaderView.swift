@@ -12,6 +12,7 @@ struct ProfileHeaderView: View {
     var profileImage: Image
     var name: String
     var username: String
+    var streak: Int
     
     var body: some View {
         VStack {
@@ -25,13 +26,11 @@ struct ProfileHeaderView: View {
                         Spacer()
                         VStack(alignment: .leading, spacing: 10) {
                             HStack(spacing: 4) {
-                                Rectangle()
-                                    .foregroundColor(.clear)
+                                Image("Streak")
+                                    .resizable()
+                                    .scaledToFit()
                                     .frame(width: 21, height: 21)
-                                    .background(
-                                        Image("streakcat")
-                                    )
-                                Text("36")
+                                Text(String(streak))
                                     .font(Font.custom("Host Grotesk", size: 22))
                                     .foregroundColor(.white)
                             }
@@ -67,7 +66,9 @@ struct ProfileHeaderView: View {
             }
             .padding(.horizontal, 50.0)
             .frame(height: 286)
-            .background(backgroundColor)
+            .background(
+                Image("profileBg")
+            )
             .cornerRadius(100, corners: [.bottomRight])
             .shadow(radius: 5)
         }
@@ -96,7 +97,8 @@ struct ProfileHeaderView_Previews: PreviewProvider {
             backgroundColor: Color.secondaryLightblue,
             profileImage: Image(systemName: "person.crop.circle"),
             name: "John Doe",
-            username: "@johndoe"
+            username: "@johndoe",
+            streak: 0
         )
         .previewLayout(.sizeThatFits)
         .padding()

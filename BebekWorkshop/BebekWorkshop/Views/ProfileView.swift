@@ -15,8 +15,9 @@ struct ProfileView: View {
                 ProfileHeaderView(
                     backgroundColor: Color.secondaryLightblue,
                     profileImage: Image(systemName: "person.crop.circle"),
-                    name: "John Doe",
-                    username: "@johndoe"
+                    name: userViewModel.currentLogUser?.name ?? "John Doe",
+                    username: userViewModel.currentLogUser?.username ?? "johndoe",
+                    streak: userViewModel.currentLogUser?.streak ?? 0
                 )
                 HStack {
                     Text("Set up your personal goal")
@@ -28,8 +29,8 @@ struct ProfileView: View {
                 }
             }
             
-            DailyGoalHomeProgressComponent()
-            ReadingStatistics(dataCollection: ChartViewModel())
+            DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
+            ReadingStatistics()
             ReviewHistory()
                 .padding()
             BadgesCollection()

@@ -47,6 +47,7 @@ struct BookView: View {
             {
                 userViewModel.showAlert = true
                 userViewModel.alertHasShown = true
+                userViewModel.currentLogUser?.streak += 1
             }
             
             readingViewModel.toggleTracking()

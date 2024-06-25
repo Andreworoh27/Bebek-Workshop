@@ -45,7 +45,7 @@ struct DailyGoalHomeProgressComponent: View {
                     }
                     
                     HStack(spacing: 22) {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 0) {
                             Text("Today’s Time")
                             Text("\(totalReadingMinutesToday) minutes")
                                 .font(Font.hostGrotesk(typography: .title1))
@@ -53,7 +53,7 @@ struct DailyGoalHomeProgressComponent: View {
                         }
                         Divider()
                             .frame(height: 48)
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 0) {
                             Text("Your Goal")
                             HStack {
                                 Text("\(userViewModel.userReadingGoal) minutes")
@@ -75,6 +75,7 @@ struct DailyGoalHomeProgressComponent: View {
                                     .onChange(of: selectedOption) { oldValue, newValue in
                                         if newValue > oldValue {
                                             userViewModel.alertHasShown = false
+                                            userViewModel.currentLogUser?.streak -= 1
                                         }
                                         userViewModel.currentLogUser?.readingGoal = newValue
                                     }

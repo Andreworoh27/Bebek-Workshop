@@ -24,8 +24,10 @@ struct SearchBarComponent: View {
             
             if(userViewModel.currentLogUser == nil){
                 HStack {
-                    Image(systemName: "bolt.fill")
-                        .foregroundColor(.tertiaryMexican)
+                    Image("Streak")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 37)
                     Text("-")
                 }
                 
@@ -37,8 +39,10 @@ struct SearchBarComponent: View {
                     }
             }else{
                 HStack {
-                    Image(systemName: "bolt.fill")
-                        .foregroundColor(.tertiaryMexican)
+                    Image("Streak")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 37)
                     Text("\(userViewModel.currentLogUser!.streak)")
                 }
                 
@@ -50,6 +54,7 @@ struct SearchBarComponent: View {
                         .foregroundColor(.white)
                         .overlay(alignment: .center) {
                             Image(systemName: "person.fill")
+                                .foregroundColor(Color.primaryOreo)
                         }
                 }
             }

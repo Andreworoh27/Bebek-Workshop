@@ -109,7 +109,6 @@ struct HomeView: View {
                 }
             }
             .padding(.top, 38)
-            .ignoresSafeArea(edges: .bottom)
             .onAppear{
                 // create user if there is no user for testing.
                 if(allUsers.isEmpty){
@@ -141,13 +140,51 @@ struct HomeView: View {
                 }
             }
         }
-        .alert(isPresented: $userViewModel.showAlert) {
-            Alert(
-                title: Text("Congratulations!"),
-                message: Text("You have achieved your goal!"),
-                dismissButton: .default(Text("Awesome!"))
-            )
+        .overlay {
+            if userViewModel.showAlert == true {
+                ZStack {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "multiply")
+                                .font(.system(size: 34))
+                                .bold()
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    userViewModel.showAlert = false
+                                }
+                        }
+                        Spacer()
+                    }
+                    VStack {
+                        Image("goal-achieved")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 570)
+                            .padding(.leading, 54)
+                        Text("You have reached your goal!")
+                            .font(Font.hostGrotesk(typography: .largeTitle))
+                            .foregroundStyle(.white)
+                        Button {
+                            userViewModel.showAlert = false
+                        } label: {
+                            Text("Continue Reading")
+                                .foregroundStyle(Color.white)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 22)
+                        }
+                        .background(Color.secondaryBlueberry)
+                        .cornerRadius(20)
+
+                    }
+                    Spacer()
+                }
+                .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .padding(48)
+                .background(Color.black.opacity(0.75))
+            }
         }
+        .ignoresSafeArea()
     }
     
     func generateInitialBooksData()async throws{
@@ -161,6 +198,10 @@ struct HomeView: View {
     
     func insertInitialUser(newUser : User) throws{
         context.insert(newUser)
+        
+        newUser.histories.append(ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: ISO8601DateFormatter().date(from: "2024-06-23T00:00:00Z") ?? Date()))
+        newUser.histories.append(ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: ISO8601DateFormatter().date(from: "2024-06-24T00:00:00Z") ?? Date()))
+        
         try context.save()
     }
 }
