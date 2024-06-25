@@ -20,7 +20,7 @@ struct DetailView: View {
     var body: some View {
         VStack {
             if epubViewController == nil{
-                SearchBarComponent(user: userViewModel.currentLogUser ?? User.sampleData[0])
+                SearchBarComponent()
                     .padding(.horizontal, 20)
                 ZStack {
                     UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)

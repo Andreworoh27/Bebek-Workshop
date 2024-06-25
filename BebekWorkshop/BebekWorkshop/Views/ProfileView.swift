@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     var body: some View {
         ScrollView{
             VStack{
@@ -27,7 +28,7 @@ struct ProfileView: View {
                 }
             }
             
-            DailyGoalHomeProgressComponent()
+            DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
 //            VStack{
 //                Text("Checkout your reading statistics")
 //                    .font(Font.hostGrotesk(typography: .largeTitle))

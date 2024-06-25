@@ -42,7 +42,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                SearchBarComponent(user: userViewModel.currentLogUser)
+                SearchBarComponent()
                     .padding(.horizontal, 20)
                     .padding(.top, 38)
                     .padding(.bottom, 58)
@@ -81,7 +81,7 @@ struct HomeView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 40, bottom: 38, trailing: -40))
                     
-                    DailyGoalHomeProgressComponent()
+                    DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
                         .padding(.bottom, 58)
                     
                     VStack {
@@ -113,7 +113,7 @@ struct HomeView: View {
             .onAppear{
                 // create user if there is no user for testing.
                 if(allUsers.isEmpty){
-                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 3, preferedGenres: ["development","tech","design"], streak: 0)
+                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 3, preferedGenres: ["development","tech","design"], streak: 3)
                     
                     do {
                         try insertInitialUser(newUser: newUser)

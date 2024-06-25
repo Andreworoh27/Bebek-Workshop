@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchBarComponent: View {
     @State var searchTextInput: String = ""
-    var user : User?
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         HStack (spacing: 25) {
@@ -22,7 +22,7 @@ struct SearchBarComponent: View {
             .background(.white)
             .cornerRadius(50)
             
-            if(user == nil){
+            if(userViewModel.currentLogUser == nil){
                 HStack {
                     Image(systemName: "bolt.fill")
                         .foregroundColor(.tertiaryMexican)
@@ -39,7 +39,7 @@ struct SearchBarComponent: View {
                 HStack {
                     Image(systemName: "bolt.fill")
                         .foregroundColor(.tertiaryMexican)
-                    Text("\(user!.streak)")
+                    Text("\(userViewModel.currentLogUser!.streak)")
                 }
                 
                 NavigationLink {
@@ -63,5 +63,7 @@ struct SearchBarComponent: View {
 }
 
 #Preview {
-    SearchBarComponent(user: User.sampleData[0])
+    SearchBarComponent()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }
