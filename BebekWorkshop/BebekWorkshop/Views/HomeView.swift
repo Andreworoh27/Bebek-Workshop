@@ -113,7 +113,7 @@ struct HomeView: View {
             .onAppear{
                 // create user if there is no user for testing.
                 if(allUsers.isEmpty){
-                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 3, preferedGenres: ["development","tech","design"], streak: 0)
+                    let newUser = User(name: "Bebek", username: "bebekworkshop", email: "bebek@mail.com", password: "bebekworkshop", readingGoal: 3, preferedGenres: ["development","tech","design"], streak: 0, longestStreak: 5, streakFreeze: 1)
                     
                     do {
                         try insertInitialUser(newUser: newUser)

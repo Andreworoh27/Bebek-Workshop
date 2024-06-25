@@ -15,7 +15,8 @@ struct BebekWorkshopApp: App {
             User.self,
             Book.self,
             ReadHistory.self,
-            Badge.self
+            Badge.self,
+            Challenge.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
@@ -27,14 +28,16 @@ struct BebekWorkshopApp: App {
     }()
     
     @StateObject var userViewModel: UserViewModel = UserViewModel()
+    @StateObject var challengeViewModel: ChallengeViewModel = ChallengeViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StreakView()
                 .font(Font.hostGrotesk(typography: .body))
                 .modelContainer(sharedModelContainer)
         }
         .environmentObject(userViewModel)
+        .environmentObject(challengeViewModel)
 
     }
 }
