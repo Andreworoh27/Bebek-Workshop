@@ -16,7 +16,7 @@ struct CircularProgressComponent: View {
                 .frame(width: 164)
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(Color.secondaryBlueberry,style: StrokeStyle(
+                .stroke(Color.tertiaryBlush,style: StrokeStyle(
                     lineWidth: 15,
                     lineCap: .round)
                 )

@@ -25,10 +25,10 @@ struct DailyGoalHomeProgressComponent: View {
                 .foregroundColor(Color.secondaryLightblueBackground)
             HStack {
                 ZStack (alignment: .bottom) {
-                    Image("cat-placeholder")
+                    Image("cat-goal")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 140)
+                        .frame(width: 130)
                     CircularProgressComponent(progress: Double(totalReadingMinutesToday)/Double(userViewModel.currentLogUser?.readingGoal ?? 1))
                 }
                 .padding(.trailing, 48)

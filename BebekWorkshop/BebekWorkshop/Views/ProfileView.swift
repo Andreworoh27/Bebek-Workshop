@@ -23,20 +23,13 @@ struct ProfileView: View {
                         .font(Font.hostGrotesk(typography: .largeTitle))
                         .multilineTextAlignment(.leading)
                         .bold()
-                        .padding(.leading, 40.0)
+                        .padding(EdgeInsets(top: 20, leading: 40, bottom: 0, trailing: 0))
                     Spacer()
                 }
             }
             
-            DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
-//            VStack{
-//                Text("Checkout your reading statistics")
-//                    .font(Font.hostGrotesk(typography: .largeTitle))
-//                    .multilineTextAlignment(.leading)
-//                    .bold()
-//                    .padding(40.0)
-//                Spacer()
-//            }
+            DailyGoalHomeProgressComponent()
+            ReadingStatistics(dataCollection: ChartViewModel())
             ReviewHistory()
                 .padding()
             BadgesCollection()
