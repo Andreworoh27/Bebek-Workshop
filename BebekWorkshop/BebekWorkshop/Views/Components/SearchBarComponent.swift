@@ -42,12 +42,16 @@ struct SearchBarComponent: View {
                     Text("\(user!.streak)")
                 }
                 
-                Circle()
-                    .frame(width: 37, height: 37)
-                    .foregroundColor(.white)
-                    .overlay(alignment: .center) {
-                        Image(systemName: "person.fill")
-                    }
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    Circle()
+                        .frame(width: 37, height: 37)
+                        .foregroundColor(.white)
+                        .overlay(alignment: .center) {
+                            Image(systemName: "person.fill")
+                        }
+                }
             }
         }
         .padding(20)
