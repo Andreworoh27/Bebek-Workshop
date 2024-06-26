@@ -18,6 +18,10 @@ class UserViewModel: ObservableObject {
         currentLogUser?.histories ?? []
     }
     
+    var userBadges: [Badge] {
+        currentLogUser?.badges ?? []
+    }
+    
     var userReadingGoal: Int {
         currentLogUser?.readingGoal ?? 0
     }

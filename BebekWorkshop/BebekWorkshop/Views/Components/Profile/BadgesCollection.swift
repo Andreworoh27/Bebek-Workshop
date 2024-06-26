@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BadgesCollection: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Query var badges: [Badge]
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             HStack {
                 Text("Achievements & Badges Collection")
                     .font(Font.hostGrotesk(typography: .largeTitle))
@@ -18,88 +22,45 @@ struct BadgesCollection: View {
                 Spacer()
             }
             ScrollView([.horizontal]){
-                HStack {
-                    VStack {
-                        ZStack {
-                            Ellipse()
-                                .frame(width: 185.0, height: 185.0)
-                                .padding()
-                                .foregroundColor(.gray)
-                            Image("streakcat-disabled")
-                                .resizable(capInsets: EdgeInsets())
-                                .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                HStack(spacing: 28) {
+                    ForEach(userViewModel.userBadges) { badge in
+                        VStack(spacing: 12) {
+                            Image(badge.image)
+                                .resizable()
+                                .scaledToFit()
+                            VStack(spacing: 4) {
+                                Text(badge.name)
+                                    .font(Font.hostGrotesk(typography: .headline))
+                                    .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                Text(badge.badgeDescription)
+                                    .font(Font.hostGrotesk(typography: .footnote))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                            }
                         }
-                        Text("Reading Rookie")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                        Text("First step to start\nyour reading journey ")
-                            .font(.body)
-                            .fontWeight(.regular)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
+                        .frame(width: 150)
                     }
-                    VStack {
-                        ZStack {
-                            Ellipse()
-                                .frame(width: 185.0, height: 185.0)
-                                .padding()
-                                .foregroundColor(.gray)
-                            Image("streakcat-disabled")
-                                .resizable(capInsets: EdgeInsets())
-                                .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                    
+                    ForEach(badges.filter { !userViewModel.userBadges.contains($0) }) { badge in
+                        VStack(spacing: 12) {
+                            Image(badge.imagePlaceholder)
+                                .resizable()
+                                .scaledToFit()
+                            VStack(spacing: 4) {
+                                Text(badge.name)
+                                    .font(Font.hostGrotesk(typography: .headline))
+                                    .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                Text(badge.badgeDescription)
+                                    .font(Font.hostGrotesk(typography: .footnote))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                            }
                         }
-                        Text("Story Seeker")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                        Text("Picking your first \n book to read")
-                            .font(.body)
-                            .fontWeight(.regular)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
-                    }
-                    VStack {
-                        ZStack {
-                            Ellipse()
-                                .frame(width: 185.0, height: 185.0)
-                                .padding()
-                                .foregroundColor(.gray)
-                            Image("streakcat-disabled")
-                                .resizable(capInsets: EdgeInsets())
-                                .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
-                        }
-                        Text("Chapter Champion")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                        
-                        Text("Completing first chapter \n of a book")
-                            .font(.body)
-                            .fontWeight(.regular)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
-                    }
-                    VStack {
-                        ZStack {
-                            Ellipse()
-                                .frame(width: 185.0, height: 185.0)
-                                .padding()
-                                .foregroundColor(.gray)
-                            Image("streakcat-disabled")
-                                .resizable(capInsets: EdgeInsets())
-                                .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
-                        }
-                        Text("Midway Maestro")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
-                        
-                        Text("Completing halfway \nthrough the book")
-                            .font(.body)
-                            .fontWeight(.regular)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
+                        .frame(width: 150)
                     }
                 }
             }
@@ -109,4 +70,6 @@ struct BadgesCollection: View {
 
 #Preview {
     BadgesCollection()
+        .environmentObject(UserViewModel())
+        .modelContainer(SampleData.shared.modelContainer)
 }

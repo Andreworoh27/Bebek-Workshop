@@ -21,40 +21,24 @@ class SampleData {
     private init() {
         let schema = Schema([
             Book.self,
-            Review.self,
             User.self,
-            ReadHistory.self
+            ReadHistory.self,
+            Badge.self,
+            Challenge.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         
         do {
             modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
-//            Task {
-//                try await insertSampleData()
-//            }
+            insertSampleData()
         } catch {
             fatalError("Error on SampleData: \(error)")
         }
     }
     
-    func insertSampleData() async throws {
-        let books: [Book] = await generateBook()
-
-        for book in books {
-            context.insert(book)
-        }
-        
-        for user in User.sampleData {
-            context.insert(user)
-        }
-        
-        for history in ReadHistory.sampleData {
-            context.insert(history)
-        }
-        
-        for (_, history) in ReadHistory.sampleData.enumerated() {
-            history.user = User.sampleData[0]
-            history.book = books[0]
+    func insertSampleData() {
+        for badge in Badge.sampleData {
+            context.insert(badge)
         }
         
         do {

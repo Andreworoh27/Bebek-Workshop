@@ -98,6 +98,9 @@
 		CDA45FCD2C2C03F10064F8BB /* ReadiumLCP in Frameworks */ = {isa = PBXBuildFile; productRef = CDA45FCC2C2C03F10064F8BB /* ReadiumLCP */; };
 		CDA45FCF2C2C03F10064F8BB /* ReadiumNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = CDA45FCE2C2C03F10064F8BB /* ReadiumNavigator */; };
 		CDA45FD12C2C03F10064F8BB /* ReadiumOPDS in Frameworks */ = {isa = PBXBuildFile; productRef = CDA45FD02C2C03F10064F8BB /* ReadiumOPDS */; };
+		CDA45FD42C2C54260064F8BB /* GoalReachedPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA45FD32C2C54260064F8BB /* GoalReachedPopup.swift */; };
+		CDA45FD62C2C54710064F8BB /* ProfilePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA45FD52C2C54710064F8BB /* ProfilePopup.swift */; };
+		CDA45FD82C2C622A0064F8BB /* BadgeUnlockedPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA45FD72C2C622A0064F8BB /* BadgeUnlockedPopup.swift */; };
 		CDE4DDDA2C29A48B0041EDB9 /* ReadiumAdapterGCDWebServer in Frameworks */ = {isa = PBXBuildFile; productRef = CDE4DDD92C29A48B0041EDB9 /* ReadiumAdapterGCDWebServer */; };
 		CDE4DDDC2C29A48B0041EDB9 /* ReadiumAdapterLCPSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = CDE4DDDB2C29A48B0041EDB9 /* ReadiumAdapterLCPSQLite */; };
 		CDE4DDDE2C29A48B0041EDB9 /* ReadiumLCP in Frameworks */ = {isa = PBXBuildFile; productRef = CDE4DDDD2C29A48B0041EDB9 /* ReadiumLCP */; };
@@ -186,6 +189,9 @@
 		CD8D95A62C26CC3B0013AE53 /* DetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeader.swift; sourceTree = "<group>"; };
 		CD8D95A82C26CC5E0013AE53 /* BookSynopsis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSynopsis.swift; sourceTree = "<group>"; };
 		CD8D95AA2C26CC7B0013AE53 /* BookReviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviews.swift; sourceTree = "<group>"; };
+		CDA45FD32C2C54260064F8BB /* GoalReachedPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedPopup.swift; sourceTree = "<group>"; };
+		CDA45FD52C2C54710064F8BB /* ProfilePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePopup.swift; sourceTree = "<group>"; };
+		CDA45FD72C2C622A0064F8BB /* BadgeUnlockedPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeUnlockedPopup.swift; sourceTree = "<group>"; };
 		CDEC239F2C19DFCA00A83A59 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		CDEC23A32C19E20600A83A59 /* book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = book.json; sourceTree = "<group>"; };
 		CDEC23A62C1B019100A83A59 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -369,6 +375,7 @@
 		ACE256042C241724002CC233 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CDA45FD22C2C539E0064F8BB /* Popup */,
 				AC562E9E2C2B39D60048E8E1 /* Streak */,
 				AC562E992C2B11250048E8E1 /* Challenge */,
 				AC562E5D2C2931680048E8E1 /* Book Reader */,
@@ -437,6 +444,16 @@
 				CD8D95AA2C26CC7B0013AE53 /* BookReviews.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		CDA45FD22C2C539E0064F8BB /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				CDA45FD32C2C54260064F8BB /* GoalReachedPopup.swift */,
+				CDA45FD52C2C54710064F8BB /* ProfilePopup.swift */,
+				CDA45FD72C2C622A0064F8BB /* BadgeUnlockedPopup.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		CDEC237E2C19BD1E00A83A59 /* Resource */ = {
@@ -651,6 +668,7 @@
 			files = (
 				D6EE17C62C294C690019C39D /* BadgesCollection.swift in Sources */,
 				AC7811BB2C183BA20036235B /* Book.swift in Sources */,
+				CDA45FD42C2C54260064F8BB /* GoalReachedPopup.swift in Sources */,
 				AC622D072C267AB000E211EC /* Path.swift in Sources */,
 				ACE256242C2430D9002CC233 /* CurrentlyReadBookCoverComponent.swift in Sources */,
 				CDEC23A72C1B019100A83A59 /* DetailView.swift in Sources */,
@@ -676,6 +694,7 @@
 				CDEC23B02C1B23A100A83A59 /* ReadingViewModel.swift in Sources */,
 				AC7811B92C1839690036235B /* User.swift in Sources */,
 				AC7811AA2C1839070036235B /* BebekWorkshopApp.swift in Sources */,
+				CDA45FD62C2C54710064F8BB /* ProfilePopup.swift in Sources */,
 				AC562E942C2AC0360048E8E1 /* ChallengeViewModel.swift in Sources */,
 				AC7811BF2C183CB00036235B /* Review.swift in Sources */,
 				CDEC23B42C1D307B00A83A59 /* Formatter.swift in Sources */,
@@ -684,6 +703,7 @@
 				ACE256282C2438C6002CC233 /* CircularProgressComponent.swift in Sources */,
 				ACE256082C241B49002CC233 /* HomeView.swift in Sources */,
 				D6E9B1DD2C2A6E3100F7AE90 /* ReviewHistory.swift in Sources */,
+				CDA45FD82C2C622A0064F8BB /* BadgeUnlockedPopup.swift in Sources */,
 				CDEC23A02C19DFCA00A83A59 /* SampleData.swift in Sources */,
 				ACE256222C2422BF002CC233 /* Font.swift in Sources */,
 				AC562E9D2C2B25BA0048E8E1 /* ChallengeCardSelectedComponent.swift in Sources */,

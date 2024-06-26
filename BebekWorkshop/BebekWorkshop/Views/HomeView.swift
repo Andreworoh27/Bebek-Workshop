@@ -20,8 +20,9 @@ struct HomeView: View {
     }
     
     @Query(descriptor) var allBooks: [Book]
-    @Query var allUsers:[User]
+    @Query var allUsers: [User]
     @Query var currentlyReadBooks : [ReadHistory]
+    @Query var badges : [Badge]
     
     let columns = [
         GridItem(.adaptive(minimum: 177))
@@ -134,77 +135,36 @@ struct HomeView: View {
                         }
                     }
                 }
+                
+                if(badges.isEmpty){
+                    Task{
+                        do {
+                            try insertInitialBadge()
+                        } catch {
+                            print("failed to generate initial badges")
+                        }
+                    }
+                }
             }
         }
         .blur(radius: userViewModel.showProfile ? 16 : 0)
         .overlay {
-            if userViewModel.showAlert == true {
-                ZStack {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "multiply")
-                                .font(.system(size: 34))
-                                .bold()
-                                .foregroundColor(.white)
-                                .onTapGesture {
-                                    userViewModel.showAlert = false
-                                }
-                        }
-                        Spacer()
-                    }
-                    VStack {
-                        Image("goal-achieved")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 570)
-                            .padding(.leading, 54)
-                        Text("You have reached your goal!")
-                            .font(Font.hostGrotesk(typography: .largeTitle))
-                            .foregroundStyle(.white)
-                        Button {
-                            userViewModel.showAlert = false
-                        } label: {
-                            Text("Continue Reading")
-                                .foregroundStyle(Color.white)
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 22)
-                        }
-                        .background(Color.secondaryBlueberry)
-                        .cornerRadius(20)
-                        
-                    }
-                    Spacer()
-                }
-                .frame(maxHeight: .infinity)
-                .padding(48)
-                .background(Color.black.opacity(0.75))
-            }
-            
-            if userViewModel.showProfile == true {
-                VStack (spacing: 32) {
-                    ZStack {
-                        Text("Profile")
-                        HStack {
-                            Spacer()
-                            Button {
-                                userViewModel.showProfile = false
-                            } label: {
-                                Text("Done")
-                            }
-                        }
-                    }
-                    .padding([.leading, .top, .trailing], 40)
-                    ProfileView()
+            Group {
+                if userViewModel.showAlert == true {
+                    GoalReachedPopup()
                 }
                 
-                .background(Color.white)
-                .cornerRadius(30)
-                .padding(.horizontal, 120)
-                .shadow(
-                    color: Color(red: 0, green: 0, blue: 0, opacity: 0.50), radius: 10, x: 0, y: 0
-                )
+                if userViewModel.showProfile == true {
+                    ProfilePopup()
+                }
                 
+                if userViewModel.userBadges.count == 0 {
+                    BadgeUnlockedPopup(badge: badges.filter{$0.name == "Reading Rookie"}[0])
+                }
+                
+                if userViewModel.userBadges.filter({$0.name == "Story Seeker"}).isEmpty && userViewModel.userHistories.count == 1 {
+                    BadgeUnlockedPopup(badge: badges.filter{$0.name == "Story Seeker"}[0])
+                }
             }
         }
         .ignoresSafeArea()
@@ -221,6 +181,14 @@ struct HomeView: View {
     
     func insertInitialUser(newUser : User) throws{
         context.insert(newUser)
+        
+        try context.save()
+    }
+    
+    func insertInitialBadge() throws{
+        for badge in Badge.sampleData {
+            context.insert(badge)
+        }
         
         try context.save()
     }
