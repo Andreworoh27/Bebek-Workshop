@@ -14,15 +14,14 @@ struct DailyGoalHomeProgressComponent: View {
     
     @State var selectedOption: Int
     
+    var showStats: Bool
+    
     var totalReadingMinutesToday: Int {
         ReadHistory.accumulateReadingMinutesToday(readHistories: userViewModel.userHistories)
     }
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .cornerRadius(30)
-                .foregroundColor(Color(red: 1, green: 0.81, blue: 0.84))
             HStack {
                 ZStack (alignment: .bottom) {
                     Image("cat-goal")
@@ -32,30 +31,14 @@ struct DailyGoalHomeProgressComponent: View {
                     CircularProgressComponent(progress: Double(totalReadingMinutesToday)/Double(userViewModel.currentLogUser?.readingGoal ?? 1))
                 }
                 .padding(.trailing, 48)
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack {
-                            VStack(alignment: .leading){
-                                Text("3 minutes left")
-                                    .font(Font.hostGrotesk(typography: .title1))
-                                    .fontWeight(.bold)
-                                Text("to complete your ring!")
-                                    .font(Font.hostGrotesk(typography: .title3))
-                                    .fontWeight(.light)
-                            }
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(.clear)
-                                    .frame(width: 100, height: 50.0)
-                                    .background(.white)
-                                    .cornerRadius(15)
-                                    .opacity(0.35)
-                                HStack {
-                                    Image("fire-streak")
-                                    Text("36")
-                                        .font(Font.custom("Host Grotesk", size: 28).weight(.bold))
-                                        .foregroundColor(Color.black)
-                                }
-                            }.padding(EdgeInsets(top: 0, leading: 110, bottom: 40, trailing: 0))
+                VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading){
+                        Text("3 minutes left")
+                            .font(Font.hostGrotesk(typography: .title1))
+                            .fontWeight(.bold)
+                        Text("to complete your ring!")
+                            .font(Font.hostGrotesk(typography: .title3))
+                            .fontWeight(.light)
                     }
                     HStack(spacing: 22) {
                         VStack(alignment: .leading, spacing: 0) {
@@ -99,70 +82,95 @@ struct DailyGoalHomeProgressComponent: View {
                         }
                         Spacer()
                     }
-//                    HStack{
-//                        Image(systemName: "clock")
-//                            .resizable()
-//                            .foregroundColor(.tertiaryMexican)
-//                            .frame(width: 30.0, height: 30.0)
-//                        
-//                        VStack {
-//                            Text("12h 25m")
-//                                .font(.title2)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color.black)
-//                            Text("Total Hours")
-//                                .font(.footnote)
-//                                .fontWeight(.regular)
-//                        }
-//                        Divider()
-//                            .padding(.horizontal,8)
-//                            .frame(height: 50)
-//                        Image(systemName: "book")
-//                            .resizable()
-//                            .foregroundColor(.tertiaryMexican)
-//                            .frame(width: 30, height: 26)
-//                        
-//                        VStack(alignment: .leading){
-//                            Text("1")
-//                                .font(.title2)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color.black)
-//                            Text("Total Books")
-//                                .font(.footnote)
-//                                .fontWeight(.regular)
-//                        }
-//                        Divider()
-//                            .padding(.horizontal, 8)
-//                            .frame(height: 50)
-//                        Image(systemName: "book.pages")
-//                            .resizable()
-//                            .foregroundColor(.tertiaryMexican)
-//                            .frame(width: 26, height: 30)
-//                        VStack(alignment: .leading){
-//                            Text("67")
-//                                .font(.title2)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color.black)
-//                            Text("Total Pages")
-//                                .font(.footnote)
-//                                .fontWeight(.regular)
-//                        }
-//                    }
                     .padding([.top, .bottom, .trailing], 8.0)
                     
+                    if showStats {
+                        HStack{
+                            Image(systemName: "clock")
+                                .resizable()
+                                .foregroundColor(.tertiaryMexican)
+                                .frame(width: 30.0, height: 30.0)
+                            
+                            VStack {
+                                Text("12h 25m")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.black)
+                                Text("Total Hours")
+                                    .font(.footnote)
+                                    .fontWeight(.regular)
+                            }
+                            Divider()
+                                .padding(.horizontal,8)
+                                .frame(height: 50)
+                            Image(systemName: "book")
+                                .resizable()
+                                .foregroundColor(.tertiaryMexican)
+                                .frame(width: 30, height: 26)
+                            
+                            VStack(alignment: .leading){
+                                Text("1")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.black)
+                                Text("Total Books")
+                                    .font(.footnote)
+                                    .fontWeight(.regular)
+                            }
+                            Divider()
+                                .padding(.horizontal, 8)
+                                .frame(height: 50)
+                            Image(systemName: "book.pages")
+                                .resizable()
+                                .foregroundColor(.tertiaryMexican)
+                                .frame(width: 26, height: 30)
+                            VStack(alignment: .leading){
+                                Text("67")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.black)
+                                Text("Total Pages")
+                                    .font(.footnote)
+                                    .fontWeight(.regular)
+                            }
+                            
+                        }
+                    }
+                    
+                    
                 }
-                
-                
                 Spacer()
             }
-            .padding(48)
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    HStack {
+                        Image("fire-streak")
+                        Text(String(userViewModel.currentLogUser?.streak ?? 0))
+                            .font(Font.hostGrotesk(typography: .title1))
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Color.white.opacity(0.35))
+                    .cornerRadius(15.0)
+                }
+                .padding(.top, 20)
+                Spacer()
+            }
         }
+        .frame(height: 255)
+        .padding(.vertical, 8)
         .padding(.horizontal, 40)
+        .background(Color.tertiaryMilkshake)
+        .cornerRadius(30)
+        
+        
     }
 }
 
 #Preview {
-    DailyGoalHomeProgressComponent(selectedOption: User.sampleData[0].readingGoal)
+    DailyGoalHomeProgressComponent(selectedOption: User.sampleData[0].readingGoal, showStats: true)
         .environmentObject(UserViewModel())
         .modelContainer(SampleData.shared.modelContainer)
 }

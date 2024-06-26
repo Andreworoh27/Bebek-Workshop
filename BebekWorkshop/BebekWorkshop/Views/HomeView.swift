@@ -45,21 +45,19 @@ struct HomeView: View {
                 SearchBarComponent()
                     .padding(.horizontal, 20)
                     .padding(.top, 38)
-                    .padding(.bottom, 58)
+                    .padding(.bottom, 41)
                 
                 VStack{
+                    DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal, showStats: false)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 47)
+                    
                     HStack{
-                        Text("Currently Reading")
+                        Text("Continue Reading")
                             .font(Font.hostGrotesk(typography: .largeTitle))
                             .bold()
                         
                         Spacer()
-                        
-                        Text("\(timeUntilGoalReached) minutes left")
-                            .font(Font.hostGrotesk(typography: .headline))
-                        
-                        Text("to hit your goal")
-                            .font(Font.hostGrotesk(typography: .body))
                     }
                     .padding(.horizontal, 40.0)
                     
@@ -67,22 +65,21 @@ struct HomeView: View {
                         HStack(spacing: 16){
                                 
                             if let user = userViewModel.currentLogUser {
-                                ForEach(ReadHistory.getCurrentReadingBooks(user: user), id: \.self){ book in
+                                if user.histories.count == 0 {
+                                    Text("No Current Read Books")
+                                } else {
+                                    ForEach(ReadHistory.getCurrentReadingBooks(user: user), id: \.self){ book in
                                         NavigationLink {
                                             DetailView(book: book)
                                         } label: {
                                             CurrentlyReadBookCoverComponent(book: book)
                                         }
+                                    }
                                 }
-                            } else {
-                                Text("No Current Read Books")
                             }
                         }
                     }
-                    .padding(EdgeInsets(top: 0, leading: 40, bottom: 38, trailing: -40))
-                    
-                    DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
-                        .padding(.bottom, 58)
+                    .padding(EdgeInsets(top: 0, leading: 40, bottom: 48, trailing: -40))
                     
                     VStack {
                         HStack{
@@ -198,9 +195,6 @@ struct HomeView: View {
     
     func insertInitialUser(newUser : User) throws{
         context.insert(newUser)
-        
-        newUser.histories.append(ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: ISO8601DateFormatter().date(from: "2024-06-23T00:00:00Z") ?? Date()))
-        newUser.histories.append(ReadHistory(minutesRead: 5, currentPage: 7, bookStatus: "reading", readDate: ISO8601DateFormatter().date(from: "2024-06-24T00:00:00Z") ?? Date()))
         
         try context.save()
     }

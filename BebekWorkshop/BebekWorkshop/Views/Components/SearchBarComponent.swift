@@ -23,14 +23,6 @@ struct SearchBarComponent: View {
             .cornerRadius(50)
             
             if(userViewModel.currentLogUser == nil){
-                HStack {
-                    Image("Streak")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 37)
-                    Text("-")
-                }
-                
                 Circle()
                     .frame(width: 37, height: 37)
                     .foregroundColor(.white)
@@ -38,24 +30,14 @@ struct SearchBarComponent: View {
                         Image(systemName: "person.fill")
                     }
             }else{
-                HStack {
-                    Image("Streak")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 37)
-                    Text("\(userViewModel.currentLogUser!.streak)")
-                }
-                
                 NavigationLink {
                     ProfileView()
                 } label: {
-                    Circle()
+                    Image("cat-profile")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 37, height: 37)
-                        .foregroundColor(.white)
-                        .overlay(alignment: .center) {
-                            Image(systemName: "person.fill")
-                                .foregroundColor(Color.primaryOreo)
-                        }
+                        .clipShape(Circle())
                 }
             }
         }
