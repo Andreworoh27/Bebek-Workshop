@@ -30,7 +30,7 @@ class SampleData {
         
         do {
             modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
-            insertSampleData()
+//            insertSampleData()
         } catch {
             fatalError("Error on SampleData: \(error)")
         }

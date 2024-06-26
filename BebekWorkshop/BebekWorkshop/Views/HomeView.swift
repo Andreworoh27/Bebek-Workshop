@@ -158,11 +158,13 @@ struct HomeView: View {
                     ProfilePopup()
                 }
                 
-                if userViewModel.userBadges.count == 0 {
+                if userViewModel.userBadges.count == 0 && badges.count > 0 {
                     BadgeUnlockedPopup(badge: badges.filter{$0.name == "Reading Rookie"}[0])
                 }
                 
-                if userViewModel.userBadges.filter({$0.name == "Story Seeker"}).isEmpty && userViewModel.userHistories.count == 1 {
+                if badges.count > 0
+                    && userViewModel.userBadges.filter({$0.name == "Story Seeker"}).isEmpty
+                    && userViewModel.userHistories.count == 1 {
                     BadgeUnlockedPopup(badge: badges.filter{$0.name == "Story Seeker"}[0])
                 }
             }
