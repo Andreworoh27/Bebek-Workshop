@@ -30,7 +30,7 @@ struct ProfileView: View {
             }
             
             DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
-            ReadingStatistics()
+//            ReadingStatistics(dataCollection: ChartViewModel())
             ReviewHistory()
                 .padding()
             BadgesCollection()

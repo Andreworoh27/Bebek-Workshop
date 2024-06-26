@@ -80,7 +80,6 @@ struct BadgesCollection: View {
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                 }
-                
             }
         }
     }
