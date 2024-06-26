@@ -10,32 +10,19 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     var body: some View {
-        ScrollView{
-            VStack{
-                
-                ProfileHeaderView(
-                    backgroundColor: Color.secondaryLightblue,
-                    profileImage: Image("cat-profile"),
-                    name: userViewModel.currentLogUser?.name ?? "John Doe",
-                    username: userViewModel.currentLogUser?.username ?? "johndoe",
-                    streak: userViewModel.currentLogUser?.streak ?? 0
-                )
-                HStack {
-//                    Text("Set up your personal goal")
-//                        .font(Font.hostGrotesk(typography: .largeTitle))
-//                        .multilineTextAlignment(.leading)
-//                        .bold()
-//                        .padding(EdgeInsets(top: 20, leading: 40, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-            }
-            
-//            DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal)
-//            ReadingStatistics(dataCollection: ChartViewModel())
+        VStack {
+            ProfileHeaderView(
+                backgroundColor: Color.secondaryLightblue,
+                profileImage: Image("cat-profile"),
+                name: userViewModel.currentLogUser?.name ?? "John Doe",
+                username: userViewModel.currentLogUser?.username ?? "johndoe",
+                streak: userViewModel.currentLogUser?.streak ?? 0
+            )
+            .padding(.bottom, 45)
             ReviewHistory()
-                .padding()
+                .padding(.bottom, 30)
             BadgesCollection()
-        }.ignoresSafeArea()
+        }.padding([.leading, .bottom], 40)
     }
 }
 #Preview {

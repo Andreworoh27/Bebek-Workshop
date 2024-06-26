@@ -11,6 +11,7 @@ import SwiftData
 class UserViewModel: ObservableObject {
     @Published var currentLogUser : User?
     @Published var showAlert: Bool
+    @Published var showProfile: Bool
     @Published var alertHasShown: Bool
     
     var userHistories: [ReadHistory] {
@@ -24,6 +25,7 @@ class UserViewModel: ObservableObject {
     init() {
         self.showAlert = false
         self.alertHasShown = false
+        self.showProfile = false
     }
     
     func setCurrentLogUser(user: User){

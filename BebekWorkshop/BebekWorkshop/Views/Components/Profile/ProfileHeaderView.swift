@@ -36,7 +36,6 @@ struct ProfileHeaderView: View {
                             }
                             .frame(width: 58, height: 25)
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0,  trailing: 0))
                         .frame(width: 70, height: 29)
                         .background(Color.tertiaryBlush)
                         .cornerRadius(5)
@@ -61,16 +60,7 @@ struct ProfileHeaderView: View {
                 .padding(.leading, 20)
                 
                 Spacer()
-                
-                    .padding(.trailing, 20)
             }
-            .padding(.horizontal, 50.0)
-            .frame(height: 165)
-//            .background(
-//                Image("profileBg")
-//            )
-            .cornerRadius(100, corners: [.bottomRight])
-//            .shadow(radius: 5)
         }
     }
 }

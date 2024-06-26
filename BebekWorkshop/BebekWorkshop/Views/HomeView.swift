@@ -23,8 +23,6 @@ struct HomeView: View {
     @Query var allUsers:[User]
     @Query var currentlyReadBooks : [ReadHistory]
     
-    @State var showAlert: Bool = false
-    
     let columns = [
         GridItem(.adaptive(minimum: 177))
     ]
@@ -137,6 +135,7 @@ struct HomeView: View {
                 }
             }
         }
+        .blur(radius: userViewModel.showProfile ? 16 : 0)
         .overlay {
             if userViewModel.showAlert == true {
                 ZStack {
@@ -179,6 +178,32 @@ struct HomeView: View {
                 .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .padding(48)
                 .background(Color.black.opacity(0.75))
+            }
+            
+            if userViewModel.showProfile == true {
+                VStack (spacing: 32) {
+                    ZStack {
+                        Text("Profile")
+                        HStack {
+                            Spacer()
+                            Button {
+                                userViewModel.showProfile = false
+                            } label: {
+                                Text("Done")
+                            }
+                        }
+                    }
+                    .padding([.leading, .top, .trailing], 40)
+                    ProfileView()
+                }
+                
+                .background(Color.white)
+                .cornerRadius(30)
+                .padding(.horizontal, 120)
+                .shadow(
+                    color: Color(red: 0, green: 0, blue: 0, opacity: 0.50), radius: 10, x: 0, y: 0
+                )
+                
             }
         }
         .ignoresSafeArea()

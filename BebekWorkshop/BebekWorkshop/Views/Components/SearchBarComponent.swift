@@ -30,8 +30,8 @@ struct SearchBarComponent: View {
                         Image(systemName: "person.fill")
                     }
             }else{
-                NavigationLink {
-                    ProfileView()
+                Button {
+                    userViewModel.showProfile = true
                 } label: {
                     Image("cat-profile")
                         .resizable()

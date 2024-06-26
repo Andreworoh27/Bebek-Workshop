@@ -15,7 +15,6 @@ struct BadgesCollection: View {
                     .font(Font.hostGrotesk(typography: .largeTitle))
                     .multilineTextAlignment(.leading)
                     .bold()
-                    .padding(.leading, 40.0)
                 Spacer()
             }
             ScrollView([.horizontal]){
@@ -102,7 +101,7 @@ struct BadgesCollection: View {
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
                     }
-                }.padding(.leading, 40.0)
+                }
             }
         }
     }
