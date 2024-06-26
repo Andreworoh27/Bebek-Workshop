@@ -129,7 +129,7 @@ struct StreakView: View {
                     .padding(.bottom, 72)
                     
                     HStack{
-                        challengeViewModel.isTakingChallenge == true ?
+                        challengeViewModel.isTakingChallenge == false ?
                         Text("Goodluck On Your Ongoing Challenge!")
                             .font(Font.hostGrotesk(typography: .title1))
                             .bold() :
@@ -154,7 +154,7 @@ struct StreakView: View {
                                 .padding(.trailing,32/2)
                             
                             VStack(alignment: .leading){
-                                if challengeViewModel.isTakingChallenge == true{
+                                if challengeViewModel.isTakingChallenge == false{
                                     
                                     Text("\(userViewModel.currentLogUser?.challenge?.challengeTitle ?? "Triple-week")")
                                         .font(Font.hostGrotesk(typography: .headline))
@@ -164,14 +164,11 @@ struct StreakView: View {
                                         .font(Font.hostGrotesk(typography: .subhead))
                                         .padding(.bottom,10)
                                     
-                                    Text("\(userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 12) / \(userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 21)")
-                                        .padding(.bottom)
-                                    
-                                    // progress bar does not show progress
-                                    ProgressView(value: Double((userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 12) / (userViewModel.currentLogUser?.challenge?.challengeDayDuration ?? 21))){
+                                    ProgressView(value: (Float((userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 19)) / Float((userViewModel.currentLogUser?.challenge?.challengeDayDuration ?? 21)))){
                                     }
-                                    .scaleEffect(x: 1, y: 10, anchor: .center)
+                                    .progressViewStyle(CustomProgressViewStyle(start: userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 19, end: (userViewModel.currentLogUser?.challenge?.challengeCurrentDateCounter ?? 21)))
                                     .frame(width: 329)
+                                    
                                 }
                                 else{
                                     Text("Collect more badges")
@@ -203,7 +200,7 @@ struct StreakView: View {
                         }
                     }
                 }
-
+                
             }
             .blur(radius: showChallengeModal ? 10 : 0)
             .disabled(showChallengeModal)
@@ -216,6 +213,33 @@ struct StreakView: View {
                     .shadow(radius: 100)
             }
         }
+    }
+}
+
+struct CustomProgressViewStyle: ProgressViewStyle {
+    var start : Int
+    var end : Int
+    
+    func makeBody(configuration: Configuration) -> some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: geometry.size.height / 2)
+                    .fill(Color.tertiaryGreyProgressbar)
+                
+                let progressWidth = CGFloat(configuration.fractionCompleted ?? 0) * geometry.size.width
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: geometry.size.height / 2)
+                        .fill(Color.blue)
+                        .frame(width: progressWidth)
+                    
+                    Text("\(start) / \(end)")
+                        .frame(width: progressWidth, alignment: .center)
+                        .foregroundColor(.white)
+                }
+            }
+        }
+        .frame(height: 30) // Adjust height here
     }
 }
 
