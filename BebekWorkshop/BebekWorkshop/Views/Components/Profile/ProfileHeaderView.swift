@@ -26,17 +26,17 @@ struct ProfileHeaderView: View {
                         Spacer()
                         VStack(alignment: .leading, spacing: 10) {
                             HStack(spacing: 4) {
-                                Image("Streak")
+                                Image("fire-streak")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 21, height: 21)
                                 Text(String(streak))
                                     .font(Font.custom("Host Grotesk", size: 22))
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                             }
                             .frame(width: 58, height: 25)
                         }
-                        .padding(EdgeInsets(top: 2, leading: 6, bottom: 3, trailing: 6))
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0,  trailing: 0))
                         .frame(width: 70, height: 29)
                         .background(Color.tertiaryBlush)
                         .cornerRadius(5)
@@ -65,12 +65,12 @@ struct ProfileHeaderView: View {
                     .padding(.trailing, 20)
             }
             .padding(.horizontal, 50.0)
-            .frame(height: 286)
-            .background(
-                Image("profileBg")
-            )
+            .frame(height: 165)
+//            .background(
+//                Image("profileBg")
+//            )
             .cornerRadius(100, corners: [.bottomRight])
-            .shadow(radius: 5)
+//            .shadow(radius: 5)
         }
     }
 }
@@ -95,7 +95,7 @@ struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileHeaderView(
             backgroundColor: Color.secondaryLightblue,
-            profileImage: Image(systemName: "person.crop.circle"),
+            profileImage: Image("cat-profile"),
             name: "John Doe",
             username: "@johndoe",
             streak: 0
