@@ -61,7 +61,7 @@ struct HomeView: View {
                     
                     ScrollView([.horizontal]){
                         HStack(spacing: 16){
-                                
+                            
                             if let user = userViewModel.currentLogUser {
                                 if user.histories.count == 0 {
                                     Text("No Current Read Books")
@@ -127,7 +127,7 @@ struct HomeView: View {
                     Task{
                         do {
                             try await generateInitialBooksData()
-
+                            
                         } catch {
                             print("failed to generate initial books")
                         }
@@ -171,11 +171,11 @@ struct HomeView: View {
                         }
                         .background(Color.secondaryBlueberry)
                         .cornerRadius(20)
-
+                        
                     }
                     Spacer()
                 }
-                .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .frame(maxHeight: .infinity)
                 .padding(48)
                 .background(Color.black.opacity(0.75))
             }

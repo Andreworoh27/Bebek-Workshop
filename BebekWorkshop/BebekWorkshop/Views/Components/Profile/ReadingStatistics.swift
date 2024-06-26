@@ -16,7 +16,7 @@ struct ReadingStatistics: View {
         VStack{
             HStack {
                 Text("Check out your reading statistics")
-                    .font(Font.hostGrotesk(typography: .largeTitle))
+                    .font(Font.hostGrotesk(typography: .title1))
                     .multilineTextAlignment(.leading)
                     .bold()
                     .padding(EdgeInsets(top: 20, leading: 40, bottom: 8, trailing: 0))
@@ -36,7 +36,7 @@ struct ReadingStatistics: View {
                         x: .value("Day", key),
                         y: .value("Total", value)
                     )
-                    .foregroundStyle(.mint)
+                    .foregroundStyle(.secondaryBlueberry)
                 }
             }
             .chartXAxis {

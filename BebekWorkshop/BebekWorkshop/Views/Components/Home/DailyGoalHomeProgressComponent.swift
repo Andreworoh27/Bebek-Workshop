@@ -33,9 +33,11 @@ struct DailyGoalHomeProgressComponent: View {
                 .padding(.trailing, 48)
                 VStack(alignment: .leading, spacing: 8) {
                     VStack(alignment: .leading){
-                        Text("3 minutes left")
+                        Text("Just 3 minutes left")
                             .font(Font.hostGrotesk(typography: .title1))
                             .fontWeight(.bold)
+                            .foregroundColor((showStats ? Color.tertiaryMexican : Color.black))
+                        
                         Text("to complete your ring!")
                             .font(Font.hostGrotesk(typography: .title3))
                             .fontWeight(.light)
@@ -141,28 +143,32 @@ struct DailyGoalHomeProgressComponent: View {
                 }
                 Spacer()
             }
-            
-            VStack {
-                HStack {
-                    Spacer()
+            if showStats == false{
+                VStack {
                     HStack {
-                        Image("fire-streak")
-                        Text(String(userViewModel.currentLogUser?.streak ?? 0))
-                            .font(Font.hostGrotesk(typography: .title1))
+                        Spacer()
+                        HStack {
+                            Image("fire-streak")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 32)
+                            Text(String(userViewModel.currentLogUser?.streak ?? 0))
+                                .font(Font.hostGrotesk(typography: .title1))
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(Color.white.opacity(0.35))
+                        .cornerRadius(15.0)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(Color.white.opacity(0.35))
-                    .cornerRadius(15.0)
+                    .padding(.top, 20)
+                    Spacer()
                 }
-                .padding(.top, 20)
-                Spacer()
             }
         }
         .frame(height: 255)
         .padding(.vertical, 8)
         .padding(.horizontal, 40)
-        .background(Color.tertiaryMilkshake)
+        .background(showStats ? Color.secondaryLightblueBackground : Color.tertiaryMilkshake)
         .cornerRadius(30)
         
         
@@ -170,7 +176,7 @@ struct DailyGoalHomeProgressComponent: View {
 }
 
 #Preview {
-    DailyGoalHomeProgressComponent(selectedOption: User.sampleData[0].readingGoal, showStats: true)
+    DailyGoalHomeProgressComponent(selectedOption: User.sampleData[0].readingGoal, showStats: false)
         .environmentObject(UserViewModel())
         .modelContainer(SampleData.shared.modelContainer)
 }

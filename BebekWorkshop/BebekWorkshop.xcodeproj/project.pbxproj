@@ -106,6 +106,13 @@
 		CDEC23B02C1B23A100A83A59 /* ReadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23AF2C1B23A100A83A59 /* ReadingViewModel.swift */; };
 		CDEC23B22C1B325000A83A59 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23B12C1B325000A83A59 /* UserViewModel.swift */; };
 		CDEC23B42C1D307B00A83A59 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC23B32C1D307B00A83A59 /* Formatter.swift */; };
+		D607ED702C2BFDF3001C67CF /* ReadiumAdapterGCDWebServer in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED6F2C2BFDF3001C67CF /* ReadiumAdapterGCDWebServer */; };
+		D607ED722C2BFDF3001C67CF /* ReadiumAdapterLCPSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED712C2BFDF3001C67CF /* ReadiumAdapterLCPSQLite */; };
+		D607ED742C2BFDF3001C67CF /* ReadiumLCP in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED732C2BFDF3001C67CF /* ReadiumLCP */; };
+		D607ED762C2BFDF3001C67CF /* ReadiumNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED752C2BFDF3001C67CF /* ReadiumNavigator */; };
+		D607ED782C2BFDF3001C67CF /* ReadiumOPDS in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED772C2BFDF3001C67CF /* ReadiumOPDS */; };
+		D607ED7A2C2BFDF3001C67CF /* ReadiumShared in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED792C2BFDF3001C67CF /* ReadiumShared */; };
+		D607ED7C2C2BFDF3001C67CF /* ReadiumStreamer in Frameworks */ = {isa = PBXBuildFile; productRef = D607ED7B2C2BFDF3001C67CF /* ReadiumStreamer */; };
 		D698311C2C2910D8002714D7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698311B2C2910D8002714D7 /* ProfileView.swift */; };
 		D698311F2C291244002714D7 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D698311E2C291244002714D7 /* ProfileHeaderView.swift */; };
 		D6D4459C2C2BB905000E389E /* ReadiumAdapterGCDWebServer in Frameworks */ = {isa = PBXBuildFile; productRef = D6D4459B2C2BB905000E389E /* ReadiumAdapterGCDWebServer */; };
@@ -204,6 +211,8 @@
 				CDA45FB72C2BC64C0064F8BB /* ReadiumNavigator in Frameworks */,
 				CDA45FC42C2BC6790064F8BB /* ReadiumNavigator in Frameworks */,
 				CDA45FBE2C2BC6790064F8BB /* ReadiumAdapterGCDWebServer in Frameworks */,
+				D607ED782C2BFDF3001C67CF /* ReadiumOPDS in Frameworks */,
+				D607ED762C2BFDF3001C67CF /* ReadiumNavigator in Frameworks */,
 				CDA45FB62C2BC64C0064F8BB /* ReadiumLCP in Frameworks */,
 				CDA45FB52C2BC64C0064F8BB /* ReadiumAdapterLCPSQLite in Frameworks */,
 				CDA45FC02C2BC6790064F8BB /* ReadiumAdapterLCPSQLite in Frameworks */,
@@ -219,8 +228,10 @@
 				D6D445A22C2BB905000E389E /* ReadiumNavigator in Frameworks */,
 				AC562E772C297DE00048E8E1 /* ReadiumNavigator in Frameworks */,
 				ACFCE5BA2C27F9B10018BBE1 /* ReadiumLCP in Frameworks */,
+				D607ED7C2C2BFDF3001C67CF /* ReadiumStreamer in Frameworks */,
 				D6D445A02C2BB905000E389E /* ReadiumLCP in Frameworks */,
 				D6EE17D42C2A6B750019C39D /* ReadiumShared in Frameworks */,
+				D607ED702C2BFDF3001C67CF /* ReadiumAdapterGCDWebServer in Frameworks */,
 				D6E9B1E82C2A889D00F7AE90 /* ReadiumAdapterLCPSQLite in Frameworks */,
 				AC562E752C297DE00048E8E1 /* ReadiumLCP in Frameworks */,
 				AC562E882C29BBF20048E8E1 /* ReadiumOPDS in Frameworks */,
@@ -235,6 +246,7 @@
 				ACFCE5BE2C27F9B10018BBE1 /* ReadiumOPDS in Frameworks */,
 				AC562E8C2C29BBF20048E8E1 /* ReadiumStreamer in Frameworks */,
 				CDE4DDDE2C29A48B0041EDB9 /* ReadiumLCP in Frameworks */,
+				D607ED7A2C2BFDF3001C67CF /* ReadiumShared in Frameworks */,
 				ACFCE5C22C27F9B10018BBE1 /* ReadiumStreamer in Frameworks */,
 				CD4383EF2C290A3900EBD1F4 /* ReadiumNavigator in Frameworks */,
 				CD5D67092C2A700400085533 /* ReadiumAdapterLCPSQLite in Frameworks */,
@@ -255,6 +267,8 @@
 				CD5D670B2C2A700400085533 /* ReadiumLCP in Frameworks */,
 				AC562E792C297DE00048E8E1 /* ReadiumOPDS in Frameworks */,
 				CDA45FC62C2BC6790064F8BB /* ReadiumOPDS in Frameworks */,
+				D607ED742C2BFDF3001C67CF /* ReadiumLCP in Frameworks */,
+				D607ED722C2BFDF3001C67CF /* ReadiumAdapterLCPSQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +556,13 @@
 				CDA45FC12C2BC6790064F8BB /* ReadiumLCP */,
 				CDA45FC32C2BC6790064F8BB /* ReadiumNavigator */,
 				CDA45FC52C2BC6790064F8BB /* ReadiumOPDS */,
+				D607ED6F2C2BFDF3001C67CF /* ReadiumAdapterGCDWebServer */,
+				D607ED712C2BFDF3001C67CF /* ReadiumAdapterLCPSQLite */,
+				D607ED732C2BFDF3001C67CF /* ReadiumLCP */,
+				D607ED752C2BFDF3001C67CF /* ReadiumNavigator */,
+				D607ED772C2BFDF3001C67CF /* ReadiumOPDS */,
+				D607ED792C2BFDF3001C67CF /* ReadiumShared */,
+				D607ED7B2C2BFDF3001C67CF /* ReadiumStreamer */,
 			);
 			productName = BebekWorkshop;
 			productReference = AC7811A62C1839070036235B /* BebekWorkshop.app */;
@@ -572,7 +593,7 @@
 			);
 			mainGroup = AC78119D2C1839070036235B;
 			packageReferences = (
-				CDA45FBC2C2BC6790064F8BB /* XCLocalSwiftPackageReference "../../../../../../Downloads/swift-toolkit" */,
+				D607ED6E2C2BFDF2001C67CF /* XCLocalSwiftPackageReference "../../../../Downloads/swift-toolkit-develop" */,
 			);
 			productRefGroup = AC7811A72C1839070036235B /* Products */;
 			projectDirPath = "";
@@ -868,9 +889,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CDA45FBC2C2BC6790064F8BB /* XCLocalSwiftPackageReference "../../../../../../Downloads/swift-toolkit" */ = {
+		D607ED6E2C2BFDF2001C67CF /* XCLocalSwiftPackageReference "../../../../Downloads/swift-toolkit-develop" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../../../../../Downloads/swift-toolkit";
+			relativePath = "../../../../Downloads/swift-toolkit-develop";
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -1034,6 +1055,34 @@
 		CDE4DDE12C29A48B0041EDB9 /* ReadiumOPDS */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ReadiumOPDS;
+		};
+		D607ED6F2C2BFDF3001C67CF /* ReadiumAdapterGCDWebServer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumAdapterGCDWebServer;
+		};
+		D607ED712C2BFDF3001C67CF /* ReadiumAdapterLCPSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumAdapterLCPSQLite;
+		};
+		D607ED732C2BFDF3001C67CF /* ReadiumLCP */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumLCP;
+		};
+		D607ED752C2BFDF3001C67CF /* ReadiumNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumNavigator;
+		};
+		D607ED772C2BFDF3001C67CF /* ReadiumOPDS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumOPDS;
+		};
+		D607ED792C2BFDF3001C67CF /* ReadiumShared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumShared;
+		};
+		D607ED7B2C2BFDF3001C67CF /* ReadiumStreamer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReadiumStreamer;
 		};
 		D6D4459B2C2BB905000E389E /* ReadiumAdapterGCDWebServer */ = {
 			isa = XCSwiftPackageProductDependency;
