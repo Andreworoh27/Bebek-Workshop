@@ -9,18 +9,17 @@ import SwiftUI
 
 struct CircularProgressComponent: View {
     let progress : Double
+    let lineWidth: Int
     var body: some View {
         ZStack{
             Circle()
-                .stroke(Color.white, lineWidth: 15)
-                .frame(width: 164)
+                .stroke(Color.white, lineWidth: CGFloat(lineWidth))
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(Color.secondaryBlueberry,style: StrokeStyle(
-                    lineWidth: 15,
+                    lineWidth: 20,
                     lineCap: .round)
                 )
-                .frame(width: 164)
                 .rotationEffect(.degrees(-90))
                 .animation(.easeIn, value: progress)
         }
@@ -28,5 +27,5 @@ struct CircularProgressComponent: View {
 }
 
 #Preview {
-    CircularProgressComponent(progress: 0.2)
+    CircularProgressComponent(progress: 0.2, lineWidth: 15)
 }

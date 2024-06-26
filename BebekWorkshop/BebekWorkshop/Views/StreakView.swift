@@ -32,14 +32,14 @@ struct StreakView: View {
                     }
                     DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal, showStats: true)
                         .padding(.horizontal, 40)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 30)
                     HStack(){
                         VStack(alignment: .leading){
                             Text("Keep your streak up!")
                                 .font(Font.hostGrotesk(typography: .title1))
                             HStack(spacing: 0){
                                 if (7 - (userViewModel.currentLogUser?.streak ?? 7) == 0){
-                                    Text("You have reach your goal!")
+                                    Text("Extend your streak by reaching your reading goal today!")
                                         .font(Font.hostGrotesk(typography: .callout))
                                 }
                                 else{
@@ -54,7 +54,7 @@ struct StreakView: View {
                         }
                         Spacer()
                     }
-                    .padding(.leading, 40)
+                    .padding(.horizontal, 40)
                     
                     VStack (spacing:18){
                         HStack(spacing:18) {
@@ -67,7 +67,7 @@ struct StreakView: View {
                                     Image("fire-streak")
                                         .resizable()
                                         .frame(width: 75.0, height: 75.0)
-                                    Text("39")
+                                    Text(String(userViewModel.currentLogUser?.streak ?? 0))
                                         .font(Font.custom("Host Grotesk", size: 72).weight(.black))
                                         .foregroundColor(.black)
                                 }
@@ -150,7 +150,7 @@ struct StreakView: View {
                                                     .frame(width: 76,height: 76)
                                             }
                                             else{
-                                                Image("streak")
+                                                Image("fire-streak")
                                                     .resizable()
                                                     .frame(width: 76,height: 76)
                                             }
@@ -204,8 +204,9 @@ struct StreakView: View {
                         
                         Spacer()
                     }
-                    .padding(.horizontal,72)
-                ReadingStatistics()
+                    .padding(.horizontal,56)
+                    ReadingStatistics()
+                        .padding(.top, 52)
                 }
             }
             .blur(radius: showChallengeModal ? 10 : 0)

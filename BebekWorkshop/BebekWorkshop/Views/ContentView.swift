@@ -87,5 +87,6 @@ struct HistoryView: View {
 #Preview {
     ContentView()
         .environmentObject(UserViewModel())
+        .environmentObject(ChallengeViewModel())
         .modelContainer(SampleData.shared.modelContainer)
 }

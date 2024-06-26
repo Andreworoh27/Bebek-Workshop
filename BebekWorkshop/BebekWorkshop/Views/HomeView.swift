@@ -49,7 +49,8 @@ struct HomeView: View {
                     DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal, showStats: false)
                         .padding(.horizontal, 40)
                         .padding(.bottom, 47)
-                    
+                        .foregroundColor(.black)
+
                     HStack{
                         Text("Continue Reading")
                             .font(Font.hostGrotesk(typography: .largeTitle))
@@ -228,5 +229,6 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environmentObject(UserViewModel())
+        .environmentObject(ChallengeViewModel())
         .modelContainer(SampleData.shared.modelContainer)
 }

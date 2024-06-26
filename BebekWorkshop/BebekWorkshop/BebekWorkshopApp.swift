@@ -32,7 +32,7 @@ struct BebekWorkshopApp: App {
     
     var body: some Scene {
         WindowGroup {
-            StreakView()
+            HomeView()
                 .font(Font.hostGrotesk(typography: .body))
                 .modelContainer(sharedModelContainer)
         }
