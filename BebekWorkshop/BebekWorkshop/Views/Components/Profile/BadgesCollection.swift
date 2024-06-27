@@ -16,7 +16,7 @@ struct BadgesCollection: View {
         VStack(spacing: 20) {
             HStack {
                 Text("Achievements & Badges Collection")
-                    .font(Font.hostGrotesk(typography: .largeTitle))
+                    .font(Font.custom("HostGrotesk-Bold", size: 31))
                     .multilineTextAlignment(.leading)
                     .bold()
                 Spacer()

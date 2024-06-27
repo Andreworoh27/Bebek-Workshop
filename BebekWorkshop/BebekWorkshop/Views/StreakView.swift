@@ -31,6 +31,7 @@ struct StreakView: View {
                         Spacer()
                     }
                     DailyGoalHomeProgressComponent(selectedOption: userViewModel.userReadingGoal, showStats: true)
+                        .foregroundColor(.black)
                         .padding(.horizontal, 40)
                         .padding(.bottom, 30)
                     HStack(){
@@ -85,7 +86,7 @@ struct StreakView: View {
                                     
                                     
                                     VStack(alignment: .leading){
-                                        if challengeViewModel.isTakingChallenge == false{
+                                        if challengeViewModel.isTakingChallenge {
                                             
                                             Text("\(userViewModel.currentLogUser?.challenge?.challengeTitle ?? "Triple-week Trailblazer")")
                                                 .font(Font.hostGrotesk(typography: .headline))
@@ -116,14 +117,15 @@ struct StreakView: View {
                                                 {
                                                     Rectangle()
                                                         .frame(width: 153,height: 38)
-                                                        .foregroundColor(Color.tertiaryBlush)
+                                                        .foregroundColor(Color.white)
                                                         .cornerRadius(20)
                                                     
                                                     Text("Join Challenge")
                                                         .font(Font.hostGrotesk(typography: .callout))
-                                                        .foregroundStyle(Color.white)
+                                                        .foregroundStyle(Color.tertiaryMexican)
                                                     
                                                 }
+                                                .shadow(color: Color.black.opacity(0.25), radius: 4.0, x: 0, y: 2)
                                             }
                                         }
                                     }

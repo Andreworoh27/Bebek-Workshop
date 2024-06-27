@@ -12,7 +12,7 @@ struct ReviewHistory: View {
         VStack {
             HStack {
                 Text("Explore your past reviews")
-                    .font(Font.hostGrotesk(typography: .largeTitle))
+                    .font(Font.custom("HostGrotesk-Bold", size: 31))
                     .multilineTextAlignment(.leading)
                     .bold()
                 Spacer()

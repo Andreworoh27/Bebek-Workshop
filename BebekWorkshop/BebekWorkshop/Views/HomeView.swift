@@ -54,7 +54,7 @@ struct HomeView: View {
 
                     HStack{
                         Text("Continue Reading")
-                            .font(Font.hostGrotesk(typography: .largeTitle))
+                            .font(Font.custom("HostGrotesk-Bold", size: 31))
                             .bold()
                         
                         Spacer()
@@ -84,7 +84,7 @@ struct HomeView: View {
                     VStack {
                         HStack{
                             Text("Other Books You Might Like")
-                                .font(Font.hostGrotesk(typography: .largeTitle))
+                                .font(Font.custom("HostGrotesk-Bold", size: 31))
                                 .bold()
                             Spacer()
                         }

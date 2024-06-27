@@ -20,12 +20,10 @@ struct DetailView: View {
     var body: some View {
         VStack {
             if epubViewController == nil{
-                SearchBarComponent()
-                    .padding(.horizontal, 20)
                 ZStack {
                     UnevenRoundedRectangle(topLeadingRadius: 30, topTrailingRadius: 30)
                         .foregroundColor(Color.secondaryLightblueBackground)
-                        .padding(.top, 210)
+                        .padding(.top, 190)
                     VStack {
                         
                         DetailHeader(epubViewController: $epubViewController, book: book)
