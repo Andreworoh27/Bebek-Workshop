@@ -162,7 +162,7 @@ struct StreakView: View {
                                         VStack(spacing: 15){
                                             Text("\(day[i])")
                                             if i < (userViewModel.currentLogUser?.streak ?? 3) % 7  {
-                                                Image("streak")
+                                                Image("fire-streak")
                                                     .resizable()
                                                     .frame(width: 76,height: 76)
                                             }
